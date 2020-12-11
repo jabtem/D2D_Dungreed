@@ -29,25 +29,7 @@
 
 #define _USE_MATH_DEFINES
 
-enum gamechap
-{
-	LOGO = 0,
-	MENU = 1,
-	GAME = 2,
-	OVER = 3,
-	TOTALCHAP
-};
 
-enum alphabet
-{
-	A_, B_, C_, D_, E_, F_, G_, H_, I_, J_, K_, L_
-};
-enum gamework
-{
-	INIT = 0,
-	WORK = 1,
-	DRAW = 2
-};
 
 typedef struct _Position
 {
@@ -60,3 +42,9 @@ typedef struct _Line
 	float x1, x2;
 	float y1, y2;
 }Line;
+
+typedef struct _ssWsalsh
+{
+	bool Up;
+	bool Down;
+}ssWslash;

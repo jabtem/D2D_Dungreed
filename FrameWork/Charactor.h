@@ -4,6 +4,7 @@
 class Character
 {
 private:
+	//스프라이트
 	Sprite Ch_Idle;
 	Sprite Ch_Jump;
 	Sprite Ch_Move;
@@ -13,16 +14,23 @@ private:
 	char buffer[128] = { 0,0,0,0 };
 	char ch[3] = { 0,0,0 }; 
 
+	//애니메이션 상태, 방향
 	int state;
 	int direction;
+
 	DWORD curTime;
-	bool isJump;
+
 	float gravity;//점프시계산되는 중력가속도
-	float ch_gravity;//캐릭터에 가해지는 중력값
+	float ch_gravity;//캐릭터에 가해지는 중력값(사용X)
 	
+	//점프
+	bool isJump;
 	float jumpPower;
 	float jumpTime;
 	double posY;
+
+
+	int cameraX;
 	int cameraY;
 	float next_Idle, next_Move;
 	RECT Ch_Rect;//캐릭터 충돌판정 범위

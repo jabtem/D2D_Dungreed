@@ -11,17 +11,23 @@ public:
 	void init();
 	void Update();
 	void Draw();
-	void Set_MouseX(int);
-	void Set_MouseY(int);
+
+	void Set_ssWslah(bool, bool);
+	ssWslash Get_sswSlah();
 private:
 	Sprite shortSw;
 	int weaponNum;
 	int PlayerX;
 	int PlayerY;
-	int MouseX;
-	int MouseY;
+	DWORD ssWDelay;//숏소드 휘두르는 딜레이
+	//int MouseX;
+	//int MouseY;
+	POINT mouseP;
 	float digree;
+	float slashDigree;//숏소드 공격후 변화될 각도값
 	float angle;
 	float angle2;
+
+	ssWslash slashstate;
 };
 extern WeaponManager weapon;

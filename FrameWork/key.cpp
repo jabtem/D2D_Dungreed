@@ -331,7 +331,7 @@ void Key::Update()
 	if (KeyDown('A')&&!isSDown)//왼쪽이동
 	{
 		isADown = true;
-		character.Set_Direction(Left);
+		//character.Set_Direction(Left);
 		if (!character.Get_IsJump())
 			character.Set_Sate(Move);
 		else
@@ -377,7 +377,7 @@ void Key::Update()
 	if (KeyDown('D')&&!isADown)//오른쪽이동
 	{
 		isDDown = true;
-		character.Set_Direction(Right);
+		//character.Set_Direction(Right);
 		if (!character.Get_IsJump())
 			character.Set_Sate(Move);
 		else

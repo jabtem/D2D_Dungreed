@@ -58,6 +58,9 @@
     <Filter Include="Weapon\숏소드%28안씀%29">
       <UniqueIdentifier>{281c103d-e798-4a8a-a23e-c761b1ad2e02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mouse">
+      <UniqueIdentifier>{c00fcee3-9085-4141-b4e1-b7af4ca26959}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -135,6 +138,9 @@
     <ClInclude Include="Weapon.h">
       <Filter>Weapon\WeaponManager</Filter>
     </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Mouse</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="key.cpp">
@@ -202,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Weapon\WeaponManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Mouse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

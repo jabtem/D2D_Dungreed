@@ -183,9 +183,16 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 		break;
 
 		return FALSE;
-	case WM_MOUSEMOVE:
-		weapon.Set_MouseX(LOWORD(lParam));//마우스 x좌표 입력
-		weapon.Set_MouseY(HIWORD(lParam));//마우스 y좌표 입력
+	case WM_MOUSEMOVE://마우스 움직이면호출
+		mouse.Set_MousePoint(LOWORD(lParam), HIWORD(lParam));
+		return FALSE;
+	case WM_LBUTTONDOWN:
+		mouse.Set_isLclik(true);
+		return FALSE;
+	case WM_LBUTTONUP:
+		mouse.Set_isLclik(false);
+		return FALSE;
+
 	}
 	return DefWindowProc( g_hWnd, uMsg, wParam, lParam ) ;
 }

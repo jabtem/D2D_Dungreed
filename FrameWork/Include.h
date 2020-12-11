@@ -38,7 +38,7 @@ class WeaponManager;
 #include "DeviceFont.h"
 #include "Sprite.h"
 #include "Chap.h"
-
+#include "Enum.h"
 #include "Time.h"
 #include <profileapi.h> //델타타임용헤더
 
@@ -59,17 +59,17 @@ class WeaponManager;
 #include "GameManager.h"
 
 #include "CollisionManager.h"
-#include <list>
 #include "Monster.h"
 #include "Sound.h"
-#include "Town.h"
+
 #include "Target.h"
 #include "Charactor.h"
-#include "Enum.h"
+
 #include "Camera.h"
 #include <cmath>
 
-
+#include "Mouse.h"
+#include "Town.h"
 // 무기
 #include "Weapon.h"
 

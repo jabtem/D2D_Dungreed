@@ -11,7 +11,7 @@ Character::Character()
 	direction = Right;
 	curWeapon = Ssw;//초기기본장비를 숏소드로설정
 	//점프
-	gravity = 10.0f;
+	gravity = 10.0f;//점프가 아닐때 평상시가해지는 중력값
 	//ch_gravity = 9.8f;
 	jumpPower = 70.0f;
 	jumpTime = 0.0f;
@@ -38,28 +38,15 @@ void Character::Init()
 
 void Character::Update()
 {
-	//현재장비에따라 무기정보 업데이트
-	//무기교체가 이뤄질때만 업데이트하도록 설정 교체할때마다 한번만호출
-	//camera.followCam(Ch_Rect, camera.Get_CameraRect());
-	//collision.Coll_Player_Map(Ch_Rect, town.ground_RecT);
-	//collision.Coll_Player_Map(Ch_Rect, town.plat_RecT);
+	cameraX = camera.Get_CameraX();//카메라의 X값
+	cameraY = camera.Get_CameraY();//카메라의 Y값
 
-	//int rectsize = sizeof(town.town_RecT) / sizeof(RECT);
-	//for (int i=0;i < rectsize;++i)
-	//	collision.Coll_Character_Map(Ch_Rect, town.town_RecT[i]);
-	//int linesize = sizeof(town.town_Line) / sizeof(Line);
-	//for(int i=0;i<linesize;++i)
-	//	collision.Line_RECT(town.town_Line[i], Ch_Rect);
+	if (mouse.Get_MousePoint().x + cameraX < (Ch_Rect.left + CHARACTER_WIDTH*0.5))//캐릭터 중심위치기준으로 마우스포인터가 왼쪽일때 
+		direction = Left;
+	else if (mouse.Get_MousePoint().x + cameraX >= (Ch_Rect.left + CHARACTER_WIDTH * 0.5))//캐릭터 중심위치기준으로 마우스포인터가 오른쪽일때
+		direction = Right;
 
-	//cameraY = -(-400 + m_H)/2;
-	//if ((-400 + m_H) < 0)
-	//	cameraY++;
-	//else if ((-400 + m_H) == 0)
-	//	cameraY = 0;
-
-	cameraY = camera.Get_CameraY();
-
-	if (KeyDown(VK_SPACE)&& !isJump&&!key.Get_isSDown())
+	if (KeyDown(VK_SPACE)&& !isJump&&!key.Get_isSDown())//하단점프와 구분하기해 조건설정
 	{
 		isJump = true;
 		posY = m_H;//점프전 캐릭터높이
@@ -94,6 +81,9 @@ void Character::Update()
 
 void Character::Draw()
 {
+
+	
+
 	if(collision.Get_TBCol())
 		dv_font.DrawString("Rectcol :  True", 400, 0);
 	else
@@ -123,6 +113,11 @@ void Character::Draw()
 		dv_font.DrawString("Camera Lock :  True", 700, 100);
 	else
 		dv_font.DrawString("Camera Lock :  False", 700, 100);
+
+	if (mouse.Get_Lclick())
+		dv_font.DrawString("Lclick :  True", 700, 200);
+	else
+		dv_font.DrawString("Lclick  :  False", 700, 200);
 
 
 	TCHAR sztext[100];
