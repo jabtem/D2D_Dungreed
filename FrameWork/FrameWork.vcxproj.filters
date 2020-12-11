@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="D3D Core">
+      <UniqueIdentifier>{7a9ad97c-09d8-4716-a30f-b6d891dc555c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{cebaf1a7-eceb-4a76-b89b-546059c9a4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{13bb9f74-4bfc-47bf-91dd-a899910e8f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mysql">
+      <UniqueIdentifier>{8f36a8e7-495b-493c-9a78-ed4359633356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{61d52f9b-efee-4445-a052-f6c4ab5227fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{1e0bd9b6-31b5-40b2-abf4-ac31e5c80ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\몬스터">
+      <UniqueIdentifier>{35f61e2f-4170-4def-8e3f-297eeada4a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\캐릭터">
+      <UniqueIdentifier>{394a602d-0d11-42cc-aa37-f7647f440391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\타겟">
+      <UniqueIdentifier>{05d597ef-9e58-4611-b83f-f54f7931552b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enum">
+      <UniqueIdentifier>{140d7666-2b2e-4fff-b1e4-594aad2ba9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TimeClass">
+      <UniqueIdentifier>{11cc1eb2-e646-46da-9285-d0f705f17b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Town">
+      <UniqueIdentifier>{fdde7b82-cac7-44e0-a321-1b929efed308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3D Core\source">
+      <UniqueIdentifier>{6658b04b-ad02-4972-bbd6-56610a7d0b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3D Core\header">
+      <UniqueIdentifier>{9de5f299-b97a-4cbc-8b76-fa4257b5fed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Coliision">
+      <UniqueIdentifier>{eb7d4e0b-bc07-4863-8dce-efd487c9a1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{d8f99890-3796-4132-90a4-b67e93c64993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon">
+      <UniqueIdentifier>{9f791a76-9b05-4efa-8ad7-bc118068c4c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon\WeaponManager">
+      <UniqueIdentifier>{5caa06e1-1b1c-4a94-9f09-95e9ac4c8e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon\숏소드%28안씀%29">
+      <UniqueIdentifier>{281c103d-e798-4a8a-a23e-c761b1ad2e02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Define.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="key.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Chap.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="CMng.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Over.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUTsound.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceFont.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Target.h">
+      <Filter>Object\타겟</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Object\몬스터</Filter>
+    </ClInclude>
+    <ClInclude Include="Mysql.h">
+      <Filter>Mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>D3D Core\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Charactor.h">
+      <Filter>Object\캐릭터</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>TimeClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Town.h">
+      <Filter>Map\Town</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Coliision</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Shortsword.h">
+      <Filter>Weapon\숏소드%28안씀%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Weapon\WeaponManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="key.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="CMng.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Over.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUTsound.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceFont.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Target.cpp">
+      <Filter>Object\타겟</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Object\몬스터</Filter>
+    </ClCompile>
+    <ClCompile Include="Mysql.cpp">
+      <Filter>Mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>D3D Core\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>TimeClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Town.cpp">
+      <Filter>Map\Town</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Coliision</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Object\캐릭터</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Shortsword.cpp">
+      <Filter>Weapon\숏소드%28안씀%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Weapon\WeaponManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
