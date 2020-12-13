@@ -25,7 +25,7 @@
 #define GroundLength 1662
 
 //속도
-#define SPEED 1
+#define SPEED 1 //전체속도 배율 조정용
 
 #define _USE_MATH_DEFINES
 

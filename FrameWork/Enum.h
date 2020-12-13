@@ -24,3 +24,9 @@ enum gamework
 	WORK = 1,
 	DRAW = 2
 };
+
+enum BGM
+{
+	MENUBGM,
+	TOWNBGM
+};

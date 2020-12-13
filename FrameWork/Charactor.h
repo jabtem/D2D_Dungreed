@@ -38,6 +38,8 @@ private:
 	int m_W;
 	int m_H;
 	int curWeapon;//현재장착한무기
+	bool isLeftMove;
+	bool isRightMove;
 
 public:
 	Character();
@@ -67,6 +69,8 @@ public:
 	int Get_Direction();
 	bool MoveStop();
 	int Get_Curweapon();
+	void MoveLeft();
+	void MoveRight();
 	
 };
 

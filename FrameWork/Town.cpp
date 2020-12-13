@@ -14,6 +14,7 @@ Town::Town()
 	SetPos(g2,128, 385, 448, 448);
 	SetPos(p1, 328, 320, 496, 364);
 	SetRect(&Town_World, 0, 0, 7300, 1300);
+	isTownBGMON = false;
 
 }
 
@@ -40,18 +41,27 @@ void Town::Init()
 
 	sprintf_s(FileName, "./resources/images/Map/townAtlas1.png");
 	TownAtlas.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
-
+	BGM = sound.Get_BGM(TOWNBGM);//BGM파일불러옴
+	
 }
 
 void Town::Update(double frame)
 {
+	if (!isTownBGMON)
+	{
+		sound.BGStop();//이전 재생중이던 BGM정지
+		sound.BGReset();//BGM채널 초기화
+		sound.BGPlay(BGM);
+		isTownBGMON = true;
+	}
+
 	//camera.CamCheck(Town_World, camera.Get_CameraRect());
 	camera.followCam(character.Get_ChRECT(), camera.Get_CameraRect(), Town_World);
 
-	int rectsize = sizeof(town_RecT) / sizeof(RECT);
+	int rectsize = sizeof(town_RecT) / sizeof(RECT);//RECT 배열 크기
 	for (int i = 0;i < rectsize;++i)
 		collision.Coll_Character_Map(character.Get_ChRECT(), town_RecT[i]);
-	int linesize = sizeof(town_Line) / sizeof(Line);
+	int linesize = sizeof(town_Line) / sizeof(Line);//Line 배열 크기
 	for (int i = 0;i < linesize;++i)
 		collision.Line_RECT(town_Line[i], character.Get_ChRECT());
 

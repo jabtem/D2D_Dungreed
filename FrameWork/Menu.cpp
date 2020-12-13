@@ -6,6 +6,7 @@ Menu::Menu()
 {
 	mx = 0;
 	mx2 = 0;
+	SoundOn = false;
 }
 
 Menu::~Menu()
@@ -19,11 +20,18 @@ void Menu::Init()
 	menuimg.Create("./resources/Images/MainScene/MainLogo.png", false, D3DCOLOR_XRGB(0, 0, 0));
 	menuimg1.Create("./resources/Images/MainScene/FrontCloud.png", false, D3DCOLOR_XRGB(0, 0, 0));
 	menuimg2.Create("./resources/Images/MainScene/BackCloud.png", false, D3DCOLOR_XRGB(0, 0, 0));
+	BGM = sound.Get_BGM(MENUBGM);
+
 }
 
 // Chap, 재정의 함수 호출
 void Menu::Update(double frame)
 {
+	if (!SoundOn)//한번만 호출
+	{
+		sound.BGPlay(BGM);
+		SoundOn = true;
+	}
 
 	//key.Update();
 	mx += 1;
@@ -53,6 +61,7 @@ void Menu::Update(double frame)
 
 void Menu::Draw()
 {
+
 	menuimg2.Render(mx2, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg2.Render(-2816+mx2, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg1.Render(mx, 0, 0, 1.0, 1.0); //이미지출력
@@ -76,7 +85,8 @@ void Menu::OnMessage(MSG* msg)
 			//MessageBox(NULL, "", "", 0);
 			if (g_Mng.n_Chap == MENU) {
 
-				g_Mng.n_Chap = GAME; 
+				g_Mng.n_Chap = GAME;
+				//sound.BGStop();
 				//sound.m_Bk1->Play(0, DSBPLAY_LOOPING);
 
 			}

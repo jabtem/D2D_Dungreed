@@ -4,6 +4,7 @@ Mouse mouse;
 Mouse::Mouse()
 {
 	Lclick = false;
+	isLclick = false;
 }
 
 Mouse::~Mouse()

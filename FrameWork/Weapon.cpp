@@ -3,6 +3,7 @@ WeaponManager weapon;
 WeaponManager::WeaponManager()
 {
 	slashDigree = 0;
+	ssWx = 0;
 }
 
 WeaponManager::~WeaponManager()
@@ -10,6 +11,7 @@ WeaponManager::~WeaponManager()
 }
 void WeaponManager::init()
 {
+
 	Set_ssWslah(true, false);
 	char FileName[256];
 	sprintf_s(FileName, "./resources/images/MeleeWeapon/ShortSword.png");
@@ -19,26 +21,51 @@ void WeaponManager::init()
 }
 void WeaponManager::Update()
 {
-	if (GetTickCount64() - ssWDelay > 300)
+	if (GetTickCount64() - ssWDelay > 100)
 	{
-		if (mouse.Get_Lclick())
+		//if (mouse.Get_Lclick())
+		//{
+		//	mouse.Set_isLclik(true);
+		//	if (slashstate.Up)
+		//	{
+		//		slashDigree = 180 * M_PI / 180;
+		//		Set_ssWslah(false, true);
+		//	}
+		//	else if (slashstate.Down)
+		//	{
+		//		slashDigree = 0;
+		//		Set_ssWslah(true, false);
+		//	}
+		//}
+		//else if (!mouse.Get_Lclick())
+		//{
+		//	mouse.Set_isLclik(false);
+		//}
+		if (mouse.Get_isLclick() && !mouse.Get_Lclick())
 		{
+			mouse.Set_Lclik(true);
 			if (slashstate.Up)
 			{
 				slashDigree = 180 * M_PI / 180;
+				ssWx = 20;
 				Set_ssWslah(false, true);
 			}
 			else if (slashstate.Down)
 			{
 				slashDigree = 0;
+				ssWx = 0;
 				Set_ssWslah(true, false);
 			}
+		}
+		else if (!mouse.Get_isLclick() && mouse.Get_Lclick())
+		{
+			mouse.Set_Lclik(false);
 		}
 		ssWDelay = GetTickCount64();
 	}
 
 	mouseP = mouse.Get_MousePoint();
-	weaponNum = character.Get_Curweapon();
+	weaponNum = character.Get_Curweapon();//현재무기정보를입력받음
 	PlayerX = character.Get_PlayerX()  - camera.Get_CameraX();
 	PlayerY = character.Get_PlayerY()  - camera.Get_CameraY(); 
 	angle = atan2(mouseP.y - (PlayerY - CHARACTER_HEIGHT*0.5), mouseP.x - (PlayerX + CHARACTER_WIDTH * 0.5));//캐릭터 중심과 마우스위치와의 각도(오른쪽기준)
@@ -56,9 +83,9 @@ void WeaponManager::Draw()
 
 	if (Gmanager.m_GameStart == true) {
 		if(character.Get_Direction() == Right)
-			shortSw.Render(PlayerX+ 40, PlayerY-40, -digree + slashDigree + angle,1, 1);
+			shortSw.Render(PlayerX + 40 + ssWx, PlayerY-40, -digree + slashDigree + angle,1, 1);
 		else if (character.Get_Direction() == Left)
-			shortSw.Render(PlayerX+20 , PlayerY - 40, digree - slashDigree + angle2, -1, 1);
+			shortSw.Render(PlayerX + 20 - ssWx, PlayerY - 40, digree - slashDigree + angle2, -1, 1);
 	}
 	//switch (weaponNum)
 	//{

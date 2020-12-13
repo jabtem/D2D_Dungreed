@@ -25,6 +25,7 @@ private:
 	POINT mouseP;
 	float digree;
 	float slashDigree;//숏소드 공격후 변화될 각도값
+	float ssWx;//공격후 이미지각도변경에따른 x축위치 재조정
 	float angle;
 	float angle2;
 

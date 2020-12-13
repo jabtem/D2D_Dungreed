@@ -33,7 +33,6 @@ class WeaponManager;
 #include <d3dx9.h>
 #include <dsound.h>
 #include "DXUTsound.h"
-
 #include "Define.h"
 #include "DeviceFont.h"
 #include "Sprite.h"
@@ -55,12 +54,17 @@ class WeaponManager;
 #include "Menu.h"
 #include "Over.h"
 #include "CMng.h"
+
+//키관련
 #include "Key.h"
+
 #include "GameManager.h"
 
 #include "CollisionManager.h"
 #include "Monster.h"
-#include "Sound.h"
+
+#include "FmodSound.h"
+#include "Sound.h"//사용안함
 
 #include "Target.h"
 #include "Charactor.h"

@@ -70,9 +70,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 
 	dv_font.Create(g_hWnd) ;
-	sound.g_pSoundManager = new CSoundManager();
-	sound.g_pSoundManager->Initialize(g_hWnd, DSSCL_PRIORITY);
-	sound.g_pSoundManager->SetPrimaryBufferFormat(2,22050,16);
+	//sound.g_pSoundManager = new CSoundManager();
+	//sound.g_pSoundManager->Initialize(g_hWnd, DSSCL_PRIORITY);
+	//sound.g_pSoundManager->SetPrimaryBufferFormat(2,22050,16);
 	
 	//g_SoundManager.Initialize(g_hWnd, DSSCL_PRIORITY);
 	//g_SoundManager.SetPrimaryBufferFormat(2,22050,16);
@@ -92,6 +92,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	g_Mng.chap[OVER] = new Over;
 	/////////////////////////////////////////
 
+	//모든챕터 한번 Init
+	sound.Init();//사운드 설정
 	for(int i=0; i<TOTALCHAP; i++)
 		g_Mng.chap[i]->Init();
 
@@ -109,24 +111,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 		{
 			
 			static DWORD next_game_tick = GetTickCount();
-			//static DWORD next_game_tick1 = GetTickCount();
 
-
-			
 			loops = 0;
-		
-			//static int aa;
-			//bool b = false;
 
 			while( GetTickCount64() > next_game_tick && loops < MAX_FRAMESKIP) 
 			{
 				interpolation = float(GetTickCount64() + SKIP_TICKS - next_game_tick ) / float( SKIP_TICKS );
 				if(Gmanager.m_Pause == false) g_Mng.chap[g_Mng.n_Chap]->Update(interpolation);
-				//if(b == false)
-				//{
-				//	aa = interpolation;
-				//	b = true;
-				//}
 				g_Mng.chap[g_Mng.n_Chap]->OnMessage(&msg);
 				next_game_tick += SKIP_TICKS;
 				loops++;
@@ -187,10 +178,13 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 		mouse.Set_MousePoint(LOWORD(lParam), HIWORD(lParam));
 		return FALSE;
 	case WM_LBUTTONDOWN:
-		mouse.Set_isLclik(true);
+		if(!mouse.Get_Lclick()&& g_Mng.n_Chap == GAME)//인게임화면일때만 적용
+			mouse.Set_isLclik(true);
+
 		return FALSE;
 	case WM_LBUTTONUP:
-		mouse.Set_isLclik(false);
+		if(mouse.Get_Lclick()&& g_Mng.n_Chap == GAME)
+			mouse.Set_isLclik(false);
 		return FALSE;
 
 	}

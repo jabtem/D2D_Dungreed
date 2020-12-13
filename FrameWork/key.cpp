@@ -338,9 +338,10 @@ void Key::Update()
 			character.Set_Sate(Jump);
 		if (GetTickCount64() - KeyTime > 10)
 		{
-			if (Gmanager.m_GameStart == true && !character.MoveStop())
+			if (Gmanager.m_GameStart == true)
 			{
-				character.Set_PlayerX(PlyaerX - 5 * SPEED);
+				//character.Set_PlayerX(PlyaerX - 5 * SPEED);
+				character.MoveLeft();
 			}
 
 			KeyTime = GetTickCount64();
@@ -385,9 +386,9 @@ void Key::Update()
 		if (GetTickCount64() - KeyTime > 10)
 		{
 
-			if (Gmanager.m_GameStart == true &&!character.MoveStop())
+			if (Gmanager.m_GameStart == true )
 			{
-				character.Set_PlayerX(PlyaerX + 5 * SPEED);
+				character.MoveRight();
 			}
 			KeyTime = GetTickCount64();
 		}

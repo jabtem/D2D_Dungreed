@@ -15,7 +15,7 @@ void Game::Init()
 	character.Init();
 	weapon.init();
 	//monster.Init();
-	sound.Init();
+
 	Gmanager.Init();
 	// 데이타 베이스///////////////////
 	//sql.Init();

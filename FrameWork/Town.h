@@ -18,6 +18,13 @@ private :
 
 	RECT Town_World;
 
+
+	//사운드
+	int BGM;
+	bool isTownBGMON;
+
+
+	//좌표관련
 	int cameraY;
 
 	double floorXpos;
@@ -41,10 +48,10 @@ public :
 
 	//RECT plat_RecT;
 	//RECT ground_RecT;
-	RECT town_RecT[20];
+	RECT town_RecT[20];//RECT충돌영역배열
 
 	//선좌표
-	Line town_Line[20];
+	Line town_Line[20];//LINE충돌영역배열
 
 
 	

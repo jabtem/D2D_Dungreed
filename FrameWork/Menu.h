@@ -14,8 +14,8 @@ public:
 	~Menu();
 
 	int count, alpha;
-
-
+	int BGM;
+	bool SoundOn;
 	virtual void Init();
 	virtual void Update(double frame);
 	virtual void Draw();

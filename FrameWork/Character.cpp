@@ -17,6 +17,8 @@ Character::Character()
 	jumpTime = 0.0f;
 	isJump = false;
 	jumpUp = false;//점프중 올라가고있을때
+	isLeftMove = false;
+	isRightMove = false;
 }
 Character::~Character()
 {
@@ -285,9 +287,9 @@ bool Character::MoveStop()
 {
 	RECT cam = camera.Get_CameraRect();
 
-	if (Ch_Rect.left <= cam.left && direction == Left)
+	if (Ch_Rect.left <= cam.left &&isLeftMove)//캐릭터가 카메라 왼쪽끝에도달
 		return true;
-	else if (Ch_Rect.right >= cam.right && direction == Right)
+	else if (Ch_Rect.right >= cam.right&&isRightMove)//캐릭터가 카메라 오른쪽끝에 도달
 		return true;
 	else
 		return false;
@@ -316,4 +318,21 @@ void Character::Set_PlayerY(int y)
 int Character::Get_Curweapon()
 {
 	return curWeapon;
+}
+
+void Character::MoveLeft()
+{
+	
+	isLeftMove = true;
+	isRightMove = false;
+	if(!MoveStop())
+		m_W -= 5 * SPEED;
+}
+void Character::MoveRight()
+{
+
+	isLeftMove = false;
+	isRightMove = true;
+	if (!MoveStop())
+		m_W += 5 * SPEED;
 }
