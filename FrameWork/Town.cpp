@@ -41,7 +41,7 @@ void Town::Init()
 
 	sprintf_s(FileName, "./resources/images/Map/townAtlas1.png");
 	TownAtlas.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
-	BGM = sound.Get_BGM(TOWNBGM);//BGM파일불러옴
+	
 	
 }
 
@@ -49,9 +49,8 @@ void Town::Update(double frame)
 {
 	if (!isTownBGMON)
 	{
-		sound.BGStop();//이전 재생중이던 BGM정지
-		sound.BGReset();//BGM채널 초기화
-		sound.BGPlay(BGM);
+		int TBGM = sound.Get_BGM(TOWNBGM);//BGM파일불러옴
+		sound.BGMChange(TBGM);
 		isTownBGMON = true;
 	}
 

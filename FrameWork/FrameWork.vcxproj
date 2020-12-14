@@ -153,8 +153,9 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="DXUTsound.h" />
     <ClInclude Include="DeviceFont.h" />
+    <ClInclude Include="EffectManager.h" />
     <ClInclude Include="Enum.h" />
-    <ClInclude Include="FmodSound.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Include.h" />
@@ -181,7 +182,8 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DXUTsound.cpp" />
     <ClCompile Include="DeviceFont.cpp" />
-    <ClCompile Include="FmodSound.cpp" />
+    <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="key.cpp" />

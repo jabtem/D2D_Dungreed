@@ -20,8 +20,6 @@ void Menu::Init()
 	menuimg.Create("./resources/Images/MainScene/MainLogo.png", false, D3DCOLOR_XRGB(0, 0, 0));
 	menuimg1.Create("./resources/Images/MainScene/FrontCloud.png", false, D3DCOLOR_XRGB(0, 0, 0));
 	menuimg2.Create("./resources/Images/MainScene/BackCloud.png", false, D3DCOLOR_XRGB(0, 0, 0));
-	BGM = sound.Get_BGM(MENUBGM);
-
 }
 
 // Chap, 재정의 함수 호출
@@ -29,7 +27,8 @@ void Menu::Update(double frame)
 {
 	if (!SoundOn)//한번만 호출
 	{
-		sound.BGPlay(BGM);
+		int MBGM = sound.Get_BGM(MENUBGM);
+		sound.BGPlay(MBGM);
 		SoundOn = true;
 	}
 

@@ -27,6 +27,10 @@ enum gamework
 
 enum BGM
 {
-	MENUBGM,
-	TOWNBGM
+	MENUBGM,//메뉴
+	TOWNBGM //마을
+};
+enum EFFECT
+{
+	SSWSWING//숏소드 휘두르는효과음
 };

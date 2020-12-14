@@ -20,7 +20,6 @@ private :
 
 
 	//»ç¿îµå
-	int BGM;
 	bool isTownBGMON;
 
 

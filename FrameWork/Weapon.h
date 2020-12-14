@@ -11,9 +11,10 @@ public:
 	void init();
 	void Update();
 	void Draw();
-
+	float Get_Angle1();
+	float Get_Angle2();
 	void Set_ssWslah(bool, bool);
-	ssWslash Get_sswSlah();
+	ssWslash Get_sswSlash();
 private:
 	Sprite shortSw;
 	int weaponNum;

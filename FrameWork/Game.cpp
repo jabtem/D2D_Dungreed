@@ -14,6 +14,7 @@ void Game::Init()
 	town.Init();
 	character.Init();
 	weapon.init();
+	Emanager.Init();
 	//monster.Init();
 
 	Gmanager.Init();
@@ -28,6 +29,7 @@ void Game::Draw()
 
 	weapon.Draw();
 	character.Draw();
+	Emanager.Draw();
 	Gmanager.Draw();
 
 	// 데이타 베이스///////////////////
@@ -48,7 +50,7 @@ void Game::Update(double frame)
 		//monster.Update();
 		// 입 맛에 맞게
 		town.Update(100);
-
+		Emanager.Update();
 		Gmanager.Update();
 		// 데이타 베이스///////////////////
 		// 입 맛에 맞게 (여기선 안쓰임..프레임 값이 필요 할때만.. 그냥 방법만...)

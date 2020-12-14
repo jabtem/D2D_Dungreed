@@ -13,9 +13,6 @@
     <Filter Include="Mysql">
       <UniqueIdentifier>{8f36a8e7-495b-493c-9a78-ed4359633356}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sound">
-      <UniqueIdentifier>{61d52f9b-efee-4445-a052-f6c4ab5227fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{1e0bd9b6-31b5-40b2-abf4-ac31e5c80ca7}</UniqueIdentifier>
     </Filter>
@@ -61,6 +58,12 @@
     <Filter Include="Mouse">
       <UniqueIdentifier>{c00fcee3-9085-4141-b4e1-b7af4ca26959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EffectManager">
+      <UniqueIdentifier>{074bd7fd-f9e2-4918-9caa-ac4a7079de15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SoundManager">
+      <UniqueIdentifier>{61d52f9b-efee-4445-a052-f6c4ab5227fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -94,7 +97,7 @@
       <Filter>D3D Core\header</Filter>
     </ClInclude>
     <ClInclude Include="Sound.h">
-      <Filter>Sound</Filter>
+      <Filter>SoundManager</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>GameManager</Filter>
@@ -141,8 +144,11 @@
     <ClInclude Include="Mouse.h">
       <Filter>Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="FmodSound.h">
-      <Filter>Sound</Filter>
+    <ClInclude Include="SoundManager.h">
+      <Filter>SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
+      <Filter>EffectManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +174,7 @@
       <Filter>D3D Core\source</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
-      <Filter>Sound</Filter>
+      <Filter>SoundManager</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>GameManager</Filter>
@@ -215,8 +221,11 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>Mouse</Filter>
     </ClCompile>
-    <ClCompile Include="FmodSound.cpp">
-      <Filter>Sound</Filter>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
+      <Filter>EffectManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

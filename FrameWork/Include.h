@@ -54,16 +54,15 @@ class WeaponManager;
 #include "Menu.h"
 #include "Over.h"
 #include "CMng.h"
-
-//키관련
+#include "GameManager.h"
+//키
 #include "Key.h"
 
-#include "GameManager.h"
-
+//충돌
 #include "CollisionManager.h"
 #include "Monster.h"
 
-#include "FmodSound.h"
+#include "SoundManager.h"
 #include "Sound.h"//사용안함
 
 #include "Target.h"
@@ -76,6 +75,9 @@ class WeaponManager;
 #include "Town.h"
 // 무기
 #include "Weapon.h"
+
+//이펙트
+#include "EffectManager.h"
 
 // 데이타 베이스///////////////////
 #include "Mysql.h"
