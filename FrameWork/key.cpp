@@ -16,9 +16,6 @@ Key::~Key(void)
 
 void Key::Update()
 {
-	int PlyaerX = character.Get_PlayerX();
-	int PlyaerY = character.Get_PlayerY();
-
 	// 시스템에 따라...GetTickCount/GetTickCount64
 	if(KeyDown('1'))
 	{
@@ -340,7 +337,6 @@ void Key::Update()
 		{
 			if (Gmanager.m_GameStart == true)
 			{
-				//character.Set_PlayerX(PlyaerX - 5 * SPEED);
 				character.MoveLeft();
 			}
 

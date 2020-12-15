@@ -40,10 +40,11 @@ void WeaponManager::Update()
 		//{
 		//	mouse.Set_isLclik(false);
 		//}
-		if (mouse.Get_isLclick() && !mouse.Get_Lclick())
+		if (mouse.Get_isLclick()/* && !mouse.Get_Lclick()*/)
 		{
 			if (GetTickCount64() - ssWDelay > 300)//좌클릭 입력에대한 인식 0.2초 딜레이
 			{
+				mouse.Set_isLclik(false);//마우스 클릭 딱한번만 인식하도록 누르자마자 false로 처리
 				mouse.Set_Lclik(true);
 				Emanager.Set_swingEF(true);//이펙트출력여부 설정
 				if (slashstate.Up)
@@ -73,8 +74,8 @@ void WeaponManager::Update()
 
 	mouseP = mouse.Get_MousePoint();
 	weaponNum = character.Get_Curweapon();//현재무기정보를입력받음
-	PlayerX = character.Get_PlayerX()  - camera.Get_CameraX();
-	PlayerY = character.Get_PlayerY()  - camera.Get_CameraY(); 
+	PlayerX = character.Get_PlayerX();
+	PlayerY = character.Get_PlayerY();
 	angle = atan2(mouseP.y - (PlayerY - CHARACTER_HEIGHT*0.5), mouseP.x - (PlayerX + CHARACTER_WIDTH * 0.5));//캐릭터 중심과 마우스커서위치와의 각도(오른쪽기준)
 	angle2 = atan2((PlayerY - CHARACTER_HEIGHT * 0.5) - mouseP.y, (PlayerX + CHARACTER_WIDTH * 0.5) - mouseP.x);//캐릭터 중심과 마우스커서위치와의 각도(왼쪽기준)
 }

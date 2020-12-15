@@ -10,13 +10,20 @@ Character::Character()
 	state = Idle;
 	direction = Right;
 	curWeapon = Ssw;//초기기본장비를 숏소드로설정
-	//점프
+
 	gravity = 10.0f;//점프가 아닐때 평상시가해지는 중력값
 	//ch_gravity = 9.8f;
+	//점프
 	jumpPower = 70.0f;
 	jumpTime = 0.0f;
 	isJump = false;
 	jumpUp = false;//점프중 올라가고있을때
+
+	//대쉬
+	dashTime = 0.0f;
+	dashPower = 20.0f;
+	isDash = false;
+
 	isLeftMove = false;
 	isRightMove = false;
 }
@@ -43,7 +50,25 @@ void Character::Update()
 	cameraX = camera.Get_CameraX();//카메라의 X값
 	cameraY = camera.Get_CameraY();//카메라의 Y값
 
-	if (mouse.Get_MousePoint().x + cameraX < (Ch_Rect.left + CHARACTER_WIDTH*0.5))//캐릭터 중심위치기준으로 마우스포인터가 왼쪽일때 
+	if (mouse.Get_isRclick())//우클릭한 시점의 마우스포인터좌표받아오기위함
+	{
+		mouseP = mouse.Get_MousePoint();
+		prePlayerX = PlayerX;
+		prePlayerY = PlayerY;
+		mouse.Set_isRclick(false);
+		isDash = true;
+		posY = m_H;//대쉬전 캐릭터y좌표(월드기준)
+		posX = m_W;//대쉬전 캐릭터x좌표(월드기준)
+	}
+
+	//angle1 = weapon.Get_Angle1();//오른쪽기준
+	//angle2 = weapon.Get_Angle2();//왼쪽기준
+
+
+	PlayerX = m_W - cameraX;//화면영역에서의 플레이어의 X좌표(스크린좌표)
+	PlayerY = m_H - cameraY;//화면영역에서의 플레이어의 Y좌표(스크린좌표)
+
+	if (mouse.Get_MousePoint().x + cameraX < (Ch_Rect.left + CHARACTER_WIDTH * 0.5))//캐릭터 중심위치기준으로 마우스포인터가 왼쪽일때 
 		direction = Left;
 	else if (mouse.Get_MousePoint().x + cameraX >= (Ch_Rect.left + CHARACTER_WIDTH * 0.5))//캐릭터 중심위치기준으로 마우스포인터가 오른쪽일때
 		direction = Right;
@@ -51,8 +76,8 @@ void Character::Update()
 	if (KeyDown(VK_SPACE)&& !isJump&&!key.Get_isSDown())//하단점프와 구분하기해 조건설정
 	{
 		isJump = true;
-		posY = m_H;//점프전 캐릭터높이
-
+		
+		posY = m_H;//점프전 캐릭터y좌표(월드기준)
 	}
 	if (isJump)
 	{
@@ -76,16 +101,18 @@ void Character::Update()
 		curTime = GetTickCount64();
 	}
 	//if(!collision.Get_TBCol())
-	if(!isJump)
+	if(!isJump&&!isDash)
 		m_H += gravity;
+
+	if (isDash)//우클릭시 대쉬하도록 구현
+	{
+		Dash();
+	}
 
 }
 
 void Character::Draw()
 {
-
-	
-
 	if(collision.Get_TBCol())
 		dv_font.DrawString("Rectcol :  True", 400, 0);
 	else
@@ -111,15 +138,15 @@ void Character::Draw()
 	else
 		dv_font.DrawString("Right Limit :  False", 700, 50);
 
-	if (camera.Get_CamLock())
-		dv_font.DrawString("Camera Lock :  True", 700, 100);
-	else
-		dv_font.DrawString("Camera Lock :  False", 700, 100);
-
 	if (mouse.Get_Lclick())
 		dv_font.DrawString("Lclick :  True", 700, 200);
 	else
 		dv_font.DrawString("Lclick  :  False", 700, 200);
+
+	if (mouse.Get_isLclick())
+		dv_font.DrawString("isLclick :  True", 700, 250);
+	else
+		dv_font.DrawString("isLclick  :  False", 700, 250);
 
 
 	TCHAR sztext[100];
@@ -139,30 +166,13 @@ void Character::Draw()
 	dv_font.DrawString(sztext10, 900, 200);
 
 
+	TCHAR sztext11[100];
+	sprintf_s(sztext11, __TEXT("nomx : %f"), nomx);
+	dv_font.DrawString(sztext11, 1100, 100);
 
-	TCHAR sztext4[100];
-	sprintf_s(sztext4, __TEXT("plcl : %d"), camera.plcl);
-	dv_font.DrawString(sztext4, 900, 250);
-
-	TCHAR sztext5[100];
-	sprintf_s(sztext5, __TEXT("pl : %d"), camera.pl);
-	dv_font.DrawString(sztext5, 1100, 200);
-
-	TCHAR sztext6[100];
-	sprintf_s(sztext6, __TEXT("cl : %d"), camera.cl);
-	dv_font.DrawString(sztext6, 1100, 150);
-
-	TCHAR sztext7[100];
-	sprintf_s(sztext7, __TEXT("pt : %d"), camera.pt);
-	dv_font.DrawString(sztext7, 1100, 250);
-
-	TCHAR sztext8[100];
-	sprintf_s(sztext8, __TEXT("ct : %d"), camera.ct);
-	dv_font.DrawString(sztext8, 1100, 300);
-
-	TCHAR sztext9[100];
-	sprintf_s(sztext9, __TEXT("ptct : %d"), camera.ptct);
-	dv_font.DrawString(sztext9, 1100, 350);
+	TCHAR sztext12[100];
+	sprintf_s(sztext12, __TEXT("nomy : %f"), nomy);
+	dv_font.DrawString(sztext12, 1100, 200);
 
 
 
@@ -174,24 +184,24 @@ void Character::Draw()
 		{
 		case Idle:
 			if (direction == Right) {
-				Ch_Idle.RenderDraw(m_W - camera.Get_CameraX(), m_H - 80 - cameraY, next_Idle, 0, next_Idle + 60, 80, 0, 1.0, 1.0);
+				Ch_Idle.RenderDraw(PlayerX, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, 1.0, 1.0);
 
 			}
 			else if (direction == Left)
-				Ch_Idle.RenderDraw(m_W - camera.Get_CameraX() + 60, m_H - 80 - cameraY, next_Idle, 0, next_Idle + 60, 80, 0, -1.0, 1.0);
+				Ch_Idle.RenderDraw(PlayerX + 60, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, -1.0, 1.0);
 			break;
 		case Move:
 			if (direction == Right) {
-				Ch_Move.RenderDraw(m_W - camera.Get_CameraX(), m_H - 80 - cameraY, next_Move, 0, next_Move + 68, 80, 0, 1.0, 1.0);
+				Ch_Move.RenderDraw(PlayerX, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, 1.0, 1.0);
 			}
 			else if (direction == Left)
-				Ch_Move.RenderDraw(m_W - camera.Get_CameraX() +68, m_H - 80 - cameraY, next_Move, 0, next_Move + 68, 80, 0, -1.0, 1.0);
+				Ch_Move.RenderDraw(PlayerX +68, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, -1.0, 1.0);
 			break;
 		case Jump:
 			if (direction == Right)
-				Ch_Jump.Render(m_W - camera.Get_CameraX(), m_H - 80 - cameraY, 0, 1.0, 1.0);
+				Ch_Jump.Render(PlayerX, PlayerY - 80, 0, 1.0, 1.0);
 			else if (direction == Left)
-				Ch_Jump.Render(m_W - camera.Get_CameraX() +68, m_H - 80 - cameraY, 0, -1.0, 1.0);
+				Ch_Jump.Render(PlayerX +68, PlayerY - 80, 0, -1.0, 1.0);
 
 			break;
 		};
@@ -225,7 +235,6 @@ void Character::Jumping()
 		
 	int height = (jumpTime * jumpTime * (-gravity) / 2) + (jumpTime * jumpPower);
 
-	
 	m_H = posY - height;
 
 	jumpTime += deltaTime.GetDeltaTime()*15;
@@ -295,31 +304,40 @@ bool Character::MoveStop()
 		return false;
 }
 
-int Character::Get_PlayerX()
+int Character::Get_PlayerPosX()
 {
 	return m_W;
 }
 
-int Character::Get_PlayerY()
+int Character::Get_PlayerPosY()
 {
 	return m_H;
 }
 
-void Character::Set_PlayerX(int x)
+void Character::Set_PlayerPosX(int x)
 {
 	m_W = x;
 }
 
-void Character::Set_PlayerY(int y)
+void Character::Set_PlayerPosY(int y)
 {
 	m_H = y;
 }
-
+int Character::Get_PlayerX()
+{
+	return PlayerX;
+}
+int Character::Get_PlayerY()
+{
+	return PlayerY;
+}
+//무기변경구현을위한 현재 장비정보(미사용중)
 int Character::Get_Curweapon()
 {
 	return curWeapon;
 }
 
+//왼쪽이동
 void Character::MoveLeft()
 {
 	
@@ -328,6 +346,8 @@ void Character::MoveLeft()
 	if(!MoveStop())
 		m_W -= 5 * SPEED;
 }
+
+//오른쪽이동
 void Character::MoveRight()
 {
 
@@ -335,4 +355,32 @@ void Character::MoveRight()
 	isRightMove = true;
 	if (!MoveStop())
 		m_W += 5 * SPEED;
+}
+
+void Character::Dash()
+{
+
+
+	D3DXVECTOR2 dir(mouseP.x - (prePlayerX + CHARACTER_WIDTH * 0.5), mouseP.y - (prePlayerY - CHARACTER_HEIGHT * 0.5));//대쉬할방향
+	D3DXVECTOR2 normalDir;
+	D3DXVec2Normalize(&normalDir, &dir);
+
+	nomx = normalDir.x;
+	nomy = normalDir.y;
+
+	int disX = mouseP.x - (prePlayerX + CHARACTER_WIDTH * 0.5);
+	int disY = mouseP.y - (prePlayerY - CHARACTER_HEIGHT * 0.5);
+
+	int width = normalDir.x * dashTime * dashTime * dashPower;
+	int height = normalDir.y * dashTime * dashTime * dashPower;
+
+	m_W = posX + width;
+	m_H = posY + height;
+
+	dashTime += deltaTime.GetDeltaTime()*25;
+	if (dashTime > 5)
+	{
+		isDash = false;
+		dashTime = 0;
+	}
 }

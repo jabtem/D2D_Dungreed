@@ -9,6 +9,7 @@ public:
 	void Update();
 	void Draw();
 	void Set_swingEF(bool);
+	void Set_getinfo(bool);
 private:
 	Sprite swing1;
 	int next_swing;
@@ -18,7 +19,7 @@ private:
 	//radian
 	float angleR;
 	float angleR2;
-
+	bool getinfo;
 	//degree
 	float andgleD;
 	float andgleD2;

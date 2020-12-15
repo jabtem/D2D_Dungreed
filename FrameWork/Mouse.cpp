@@ -38,3 +38,12 @@ bool Mouse::Get_isLclick()
 {
 	return isLclick;
 }
+
+void Mouse::Set_isRclick(bool TF)
+{
+	isRclick = TF;
+}
+bool Mouse::Get_isRclick()
+{
+	return isRclick;
+}

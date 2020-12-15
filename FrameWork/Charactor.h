@@ -28,15 +28,35 @@ private:
 	float jumpPower;
 	float jumpTime;
 	double posY;
+	double posX;
 
+	float nomx;
+	float nomy;
+
+
+	//대쉬
+	float dashPower;
+	float dashTime;
+	bool isDash;
 
 	int cameraX;
 	int cameraY;
 	float next_Idle, next_Move;
 	RECT Ch_Rect;//캐릭터 충돌판정 범위
 	bool jumpUp;
-	int m_W;
-	int m_H;
+	POINT mouseP;
+	int m_W;//캐릭터 실제 x좌표
+	int m_H;//캐릭터 실제 y좌표
+
+	int PlayerX;//카메라영역기준 캐릭터 x좌표
+	int PlayerY;//카메라영역기준 캐릭터 y좌표
+
+	int prePlayerX;//우클릭 시점의 x좌표
+	int prePlayerY;//우클릭 시전의 y좌표
+
+	float angle1;//오른쪽기준 캐릭터중심과 마우스 커서 사이의 각도
+	float angle2;//왼쪽기준 캐릭터 중심과 마우스 커서 사이의 각도
+
 	int curWeapon;//현재장착한무기
 	bool isLeftMove;
 	bool isRightMove;
@@ -46,13 +66,14 @@ public:
 	~Character();
 	void Set_Gravity(float);
 
-	
+
+	int Get_PlayerPosX();
+	int Get_PlayerPosY();
 	int Get_PlayerX();
 	int Get_PlayerY();
-	void Set_PlayerX(int);
-	void Set_PlayerY(int);
-
-
+	void Set_PlayerPosX(int);
+	void Set_PlayerPosY(int);
+	void Dash();
 	void Set_Sate(int);
 	void Set_Direction(int);
 	bool& Get_IsJump();

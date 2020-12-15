@@ -174,18 +174,26 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 		break;
 
 		return FALSE;
+
+
 	case WM_MOUSEMOVE://마우스 움직이면호출
 		mouse.Set_MousePoint(LOWORD(lParam), HIWORD(lParam));
 		return FALSE;
+
+	/// <좌클릭>
 	case WM_LBUTTONDOWN:
-		if(!mouse.Get_Lclick()&& g_Mng.n_Chap == GAME)//인게임화면일때만 적용
+		if (g_Mng.n_Chap == GAME)//인게임화면일때만 적용
 			mouse.Set_isLclik(true);
 
 		return FALSE;
-	case WM_LBUTTONUP:
-		if(mouse.Get_Lclick()&& g_Mng.n_Chap == GAME)
-			mouse.Set_isLclik(false);
-		return FALSE;
+	/// </좌클릭>
+
+
+	/// <우클릭>
+	case WM_RBUTTONDOWN:
+		if (g_Mng.n_Chap == GAME)
+			mouse.Set_isRclick(true);
+	/// </summary>
 
 	}
 	return DefWindowProc( g_hWnd, uMsg, wParam, lParam ) ;

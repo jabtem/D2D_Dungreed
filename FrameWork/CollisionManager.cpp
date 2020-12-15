@@ -15,7 +15,7 @@ Collision::~Collision()
 }
 void Collision::Coll_Character_Map(RECT p, RECT m)
 {
-	int PlayerY = character.Get_PlayerY();
+	int PlayerY = character.Get_PlayerPosY();
 	RECT p2;
 	SetRect(&p2, p.left + 1, p.top + 1, p.right + 1, p.bottom + 1);
 	if (IntersectRect(&rcTemp, &p, &m))
@@ -37,7 +37,7 @@ void Collision::Coll_Character_Map(RECT p, RECT m)
 			if (rcTemp.top==m.top/*&& !character.Get_jumpUp()*/)
 			{
 				//character.m_H = character.m_H;
-				character.Set_PlayerY(PlayerY - tempH);
+				character.Set_PlayerPosY(PlayerY - tempH);
 				if(!character.Get_jumpUp()&&character.Get_IsJump())
 					character.Jump_Reset();
 			}
@@ -87,7 +87,7 @@ bool Collision::Line_Line(float x1, float y1, float x2, float y2, float x3, floa
 }
 void Collision::Line_RECT(Line l, RECT _p) {
 
-	int PlayerY = character.Get_PlayerY();
+	int PlayerY = character.Get_PlayerPosY();//캐릭터의 실제 Y좌표를받아옴
 	RECT p;//플레이어의 충돌영역을 받아올 RECT
 	float height = _p.bottom - _p.top;//캐릭터 세로사이즈
 	SetRect(&p, _p.left , _p.top +(height*0.5), _p.right , _p.bottom);//기존플레이어 rect의 절반만큼만할당
@@ -109,7 +109,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	if (left && !top && bottom && !trigger && !character.Get_jumpUp()) //사각형의 왼쪽면과아랫면 충돌 
 	{
 		isLineCol = true;
-		character.Set_PlayerY(PlayerY - (p.bottom - intersectionY));
+		character.Set_PlayerPosY(PlayerY - (p.bottom - intersectionY));
 		//character.m_H -= (p.bottom - intersectionY);
 		if (!character.Get_jumpUp() && character.Get_IsJump())
 			character.Jump_Reset();
@@ -129,7 +129,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	if (right && !top && bottom && !trigger && !character.Get_jumpUp()) //사각형의 오른쪽면과 아랫면 충돌
 	{
 		isLineCol = true;
-		character.Set_PlayerY(PlayerY - (p.bottom - intersectionY));
+		character.Set_PlayerPosY(PlayerY - (p.bottom - intersectionY));
 		if (!character.Get_jumpUp() && character.Get_IsJump())
 			character.Jump_Reset();
 	}
@@ -147,7 +147,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	if ((right || left) && !top && !isTBCol && (l.y1 == l.y2) && !trigger&& !character.Get_jumpUp())//좌우면 동시충돌, 직선인경우
 	{
 		isLineCol = true;
-		character.Set_PlayerY(PlayerY - (p.bottom - intersectionY));
+		character.Set_PlayerPosY(PlayerY - (p.bottom - intersectionY));
 
 		if (!character.Get_jumpUp() && character.Get_IsJump())
 		{
