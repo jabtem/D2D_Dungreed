@@ -7,6 +7,7 @@ private:
 	bool isADown;
 	bool isDDown;
 	bool isSDown;
+	bool inputOK;//키보드 입력가능여부
 
 public:
 	Key(void);
@@ -21,6 +22,7 @@ public:
 	bool& Get_isSDown();
 
 	void Update();
+	void Set_inputOk(bool);
 };
 
 extern Key key;

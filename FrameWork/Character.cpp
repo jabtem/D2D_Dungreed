@@ -26,6 +26,7 @@ Character::Character()
 
 	isLeftMove = false;
 	isRightMove = false;
+	characterHide = false;
 }
 Character::~Character()
 {
@@ -65,8 +66,7 @@ void Character::Update()
 	//angle2 = weapon.Get_Angle2();//왼쪽기준
 
 
-	PlayerX = m_W - cameraX;//화면영역에서의 플레이어의 X좌표(스크린좌표)
-	PlayerY = m_H - cameraY;//화면영역에서의 플레이어의 Y좌표(스크린좌표)
+
 
 	if (mouse.Get_MousePoint().x + cameraX < (Ch_Rect.left + CHARACTER_WIDTH * 0.5))//캐릭터 중심위치기준으로 마우스포인터가 왼쪽일때 
 		direction = Left;
@@ -108,7 +108,8 @@ void Character::Update()
 	{
 		Dash();
 	}
-
+	PlayerX = m_W - cameraX;//화면영역에서의 플레이어의 X좌표(스크린좌표)
+	PlayerY = m_H - cameraY;//화면영역에서의 플레이어의 Y좌표(스크린좌표)
 }
 
 void Character::Draw()
@@ -180,36 +181,39 @@ void Character::Draw()
 	if (Gmanager.m_GameStart == true) {
 		//SetRect(&Ch_Rect, m_W - camera.Get_CameraX(), m_H, m_W - camera.Get_CameraX() + 60, m_H + 80);
 		SetRect(&Ch_Rect, m_W , m_H-80, m_W  + 60, m_H);
-		switch (state)
+		if (!characterHide)
 		{
-		case Idle:
-			if (direction == Right) {
-				Ch_Idle.RenderDraw(PlayerX, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, 1.0, 1.0);
+			switch (state)
+			{
+			case Idle:
+				if (direction == Right) {
+					Ch_Idle.RenderDraw(PlayerX, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, 1.0, 1.0);
+				}
+				else if (direction == Left)
+					Ch_Idle.RenderDraw(PlayerX + 60, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, -1.0, 1.0);
+				break;
+			case Move:
+				if (direction == Right) {
+					Ch_Move.RenderDraw(PlayerX, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, 1.0, 1.0);
+				}
+				else if (direction == Left)
+					Ch_Move.RenderDraw(PlayerX + 68, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, -1.0, 1.0);
+				break;
+			case Jump:
+				if (direction == Right)
+					Ch_Jump.Render(PlayerX, PlayerY - 80, 0, 1.0, 1.0);
+				else if (direction == Left)
+					Ch_Jump.Render(PlayerX + 68, PlayerY - 80, 0, -1.0, 1.0);
 
-			}
-			else if (direction == Left)
-				Ch_Idle.RenderDraw(PlayerX + 60, PlayerY - 80, next_Idle, 0, next_Idle + 60, 80, 0, -1.0, 1.0);
-			break;
-		case Move:
-			if (direction == Right) {
-				Ch_Move.RenderDraw(PlayerX, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, 1.0, 1.0);
-			}
-			else if (direction == Left)
-				Ch_Move.RenderDraw(PlayerX +68, PlayerY - 80, next_Move, 0, next_Move + 68, 80, 0, -1.0, 1.0);
-			break;
-		case Jump:
-			if (direction == Right)
-				Ch_Jump.Render(PlayerX, PlayerY - 80, 0, 1.0, 1.0);
-			else if (direction == Left)
-				Ch_Jump.Render(PlayerX +68, PlayerY - 80, 0, -1.0, 1.0);
-
-			break;
-		};
+				break;
+			};
+		}
 	}
 }
 
 void Character::Reset()
 {
+	characterHide = false;
 	m_W = 0;
 	m_H = 400;
 }
@@ -356,11 +360,17 @@ void Character::MoveRight()
 	if (!MoveStop())
 		m_W += 5 * SPEED;
 }
+void Character::Set_CharacterHide(bool _TF)
+{
+	characterHide = _TF;
+}
+bool Character::Get_CharacterHide()
+{
+	return characterHide;
+}
 
 void Character::Dash()
 {
-
-
 	D3DXVECTOR2 dir(mouseP.x - (prePlayerX + CHARACTER_WIDTH * 0.5), mouseP.y - (prePlayerY - CHARACTER_HEIGHT * 0.5));//대쉬할방향
 	D3DXVECTOR2 normalDir;
 	D3DXVec2Normalize(&normalDir, &dir);

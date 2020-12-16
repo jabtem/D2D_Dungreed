@@ -60,6 +60,7 @@ private:
 	int curWeapon;//현재장착한무기
 	bool isLeftMove;
 	bool isRightMove;
+	bool characterHide;//캐릭터 이미지 숨김여부
 
 public:
 	Character();
@@ -92,6 +93,8 @@ public:
 	int Get_Curweapon();
 	void MoveLeft();
 	void MoveRight();
+	void Set_CharacterHide(bool);
+	bool Get_CharacterHide();
 	
 };
 

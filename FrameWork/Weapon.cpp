@@ -83,10 +83,13 @@ void WeaponManager::Draw()
 {
 
 	if (Gmanager.m_GameStart == true) {
-		if(character.Get_Direction() == Right)
-			shortSw.Render(PlayerX + 40 + ssWx, PlayerY - 40,-digree + slashDigree + angle, 1,  1);
-		else if (character.Get_Direction() == Left)
-			shortSw.Render(PlayerX + 20 - ssWx, PlayerY - 40, digree - slashDigree + angle2, -1, 1);
+		if (!character.Get_CharacterHide())//무기는 캐릭터와 함께그려져야하므로 캐릭터가 사라지면 같이사라지게함
+		{
+			if (character.Get_Direction() == Right)
+				shortSw.Render(PlayerX + 40 + ssWx, PlayerY - 40, -digree + slashDigree + angle, 1, 1);
+			else if (character.Get_Direction() == Left)
+				shortSw.Render(PlayerX + 20 - ssWx, PlayerY - 40, digree - slashDigree + angle2, -1, 1);
+		}
 	}
 }
 void WeaponManager::Set_ssWslah(bool _Up, bool _Down)

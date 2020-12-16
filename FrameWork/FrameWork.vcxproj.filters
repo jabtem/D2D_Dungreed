@@ -64,6 +64,9 @@
     <Filter Include="SoundManager">
       <UniqueIdentifier>{61d52f9b-efee-4445-a052-f6c4ab5227fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\Dungeon">
+      <UniqueIdentifier>{50753888-791d-4c5a-8300-e4405a93b31e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">

@@ -90,7 +90,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	int PlayerY = character.Get_PlayerPosY();//캐릭터의 실제 Y좌표를받아옴
 	RECT p;//플레이어의 충돌영역을 받아올 RECT
 	float height = _p.bottom - _p.top;//캐릭터 세로사이즈
-	SetRect(&p, _p.left , _p.top +(height*0.5), _p.right , _p.bottom);//기존플레이어 rect의 절반만큼만할당
+	SetRect(&p, _p.left , _p.top +(height*0.75), _p.right , _p.bottom);//기존플레이어 rect의 절반만큼만할당
 
 	//충돌여부만 구분(상하)
 	bool top = Line_Line(l.x1, l.y1, l.x2, l.y2, p.left, p.top, p.right, p.top);

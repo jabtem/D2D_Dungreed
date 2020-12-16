@@ -16,16 +16,24 @@ private :
 	Sprite Town_Floor;
 	Sprite TownAtlas;//타운 타일맵
 
+	Sprite DungeonEat;//던전입구 X:480 Y:360씩자름
+
 	RECT Town_World;
 
 
 	//사운드
 	bool isTownBGMON;
 
+	//던전입구애니메이션
+	float next_dungeonEat;
+	bool doorOpen;//던전입구출력여부 캐릭터의 월드좌표가 3865~ 3865+780범위내일경우 호출
+	bool doorAni;//던전입구 애니메이션 스타트
+	DWORD curtime;
 
 	//좌표관련
+	int cameraX;
 	int cameraY;
-
+	int playerX;
 	double floorXpos;
 	double floorYpos;
 
@@ -60,6 +68,7 @@ public :
 	void Init();
 	void Update(double frame);
 	void Draw();
+	void Reset();
 	void SetPos(Position&p,int, int, int, int);
 	void SetLine(Line& l, int, int, int, int);
 

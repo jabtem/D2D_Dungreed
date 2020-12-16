@@ -42,14 +42,17 @@ void Game::Update(double frame)
 
 	if (GetTickCount64() - time > frame)
 	{
-		camera.Update();
+		
 		deltaTime.Update();
-
+		
 		key.Update();
+		
 		town.Update(100);
-
 		character.Update();
 		weapon.Update();
+		camera.Update();
+
+	
 		
 		//monster.Update();
 		// 입 맛에 맞게
