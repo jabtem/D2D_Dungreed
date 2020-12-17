@@ -32,5 +32,7 @@ enum BGM
 };
 enum EFFECT
 {
-	SSWSWING//숏소드 휘두르는효과음
+	SSWSWING,//숏소드 휘두르는효과음
+	DUNOPEN,//던전열림
+	DUNCLOSE//던전닫힘
 };

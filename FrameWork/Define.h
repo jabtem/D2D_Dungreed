@@ -20,6 +20,7 @@
 #define TOWN_MAXRANGE 6300
 #define TOWN_MINRANGE 100
 #define MAP_MAXHEIGHT 384
+#define TILE_SIZE 64
 
 //바닥 한세트 넓이
 #define GroundLength 1662
@@ -48,3 +49,10 @@ typedef struct _ssWsalsh
 	bool Up;
 	bool Down;
 }ssWslash;
+
+//2차원배열의 크기를 저장받기위한 구조체
+typedef struct _arrSize
+{
+	int row;//행
+	int col;//열
+}arrSize;

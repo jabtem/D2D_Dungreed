@@ -23,6 +23,8 @@ private :
 
 	//사운드
 	bool isTownBGMON;
+	bool isOpenSound;
+	bool isCloseSound;
 
 	//던전입구애니메이션
 	float next_dungeonEat;
@@ -48,17 +50,19 @@ private :
 	double gX;
 	double gMoveCnt;//지면타일 이동횟수
 
+	//사각형좌표
+	RECT town_RecT[20];//RECT충돌영역배열
+
+	//선좌표
+	Line town_Line[20];//LINE충돌영역배열
+
 	//std::list<RECT> town_RecT;
 public :
 	Town();
 	~Town();
 
-	//RECT plat_RecT;
-	//RECT ground_RecT;
-	RECT town_RecT[20];//RECT충돌영역배열
 
-	//선좌표
-	Line town_Line[20];//LINE충돌영역배열
+
 
 
 	

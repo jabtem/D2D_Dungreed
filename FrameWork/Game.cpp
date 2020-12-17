@@ -15,6 +15,7 @@ void Game::Init()
 	character.Init();
 	weapon.init();
 	Emanager.Init();
+	dungeon.init();
 	//monster.Init();
 
 	Gmanager.Init();
@@ -25,6 +26,7 @@ void Game::Init()
 void Game::Draw()
 {
 	town.Draw();
+	dungeon.Draw();
 	//monster.Draw();
 
 	weapon.Draw();

@@ -19,6 +19,9 @@ private:
 	int MenuBGM;//메뉴배경음
 	int TownBGM;//마을배경음
 	int ssWEffect;//숏소드 효과음
+	int dungeonOpen;
+	int dungeonClose;
+	bool isEffectPlay;
 
 public:
 	std::map<std::string, int> m_CheckList;
@@ -34,7 +37,7 @@ public:
 	void BGPlay(int _SoundNum);
 	void BGMChange(int _SoundNum);
 	void BGStop();
-
+	void SoundPlay(int _SoundNUm);
 	void  VolumDown();
 	void  VolumUp();
 	void BGReset();

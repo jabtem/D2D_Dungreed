@@ -72,7 +72,10 @@ class WeaponManager;
 #include <cmath>
 
 #include "Mouse.h"
+
+//¸Ê
 #include "Town.h"
+#include "Dungeon.h"
 // ¹«±â
 #include "Weapon.h"
 

@@ -28,6 +28,8 @@ void SoundManager::Init()
 
 	/// <효과음>
 	ssWEffect = AddSoundFile("./resources/sound/MeleeWeapon/generalAttack.wav", false);//숏쇼드 효과음
+	dungeonOpen = AddSoundFile("./resources/sound/DungreedSound/DungeonOpen.wav", false);//던전입구 열리는효과음
+	dungeonClose = AddSoundFile("./resources/sound/DungreedSound/DungeonClose.wav", false);//던전입구 닫히는 효과음
 	/// </효과음>
 
 }
@@ -76,6 +78,16 @@ void SoundManager::BGMChange(int _SoundNum)
 	BGPlay(_SoundNum);
 }
 
+void SoundManager::SoundPlay(int _SoundNum)
+{
+	isEffectPlay = false;
+	if (!isEffectPlay)
+	{
+		EffectPlay(_SoundNum);
+		isEffectPlay = true;
+	}
+}
+
 void  SoundManager::VolumDown()
 {
 	m_volum -= 0.1f;
@@ -117,6 +129,10 @@ int SoundManager::Get_Effect(int _Effect)
 	{
 	case SSWSWING:
 		return ssWEffect;
+	case DUNOPEN:
+		return dungeonOpen;
+	case DUNCLOSE:
+		return dungeonClose;
 		break;
 
 	}

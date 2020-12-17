@@ -42,7 +42,7 @@ void WeaponManager::Update()
 		//}
 		if (mouse.Get_isLclick()/* && !mouse.Get_Lclick()*/)
 		{
-			if (GetTickCount64() - ssWDelay > 300)//좌클릭 입력에대한 인식 0.2초 딜레이
+			if (GetTickCount64() - ssWDelay > 300)//좌클릭 입력에대한 인식 0.3초 딜레이
 			{
 				mouse.Set_isLclik(false);//마우스 클릭 딱한번만 인식하도록 누르자마자 false로 처리
 				mouse.Set_Lclik(true);

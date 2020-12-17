@@ -67,6 +67,9 @@
     <Filter Include="Map\Dungeon">
       <UniqueIdentifier>{50753888-791d-4c5a-8300-e4405a93b31e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\TileNum">
+      <UniqueIdentifier>{51abc5cc-c219-41d8-871b-45152495e28e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -153,6 +156,15 @@
     <ClInclude Include="EffectManager.h">
       <Filter>EffectManager</Filter>
     </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>Map\Dungeon</Filter>
+    </ClInclude>
+    <ClInclude Include="TileNum.h">
+      <Filter>Map\TileNum</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomData.h">
+      <Filter>Map\Dungeon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="key.cpp">
@@ -229,6 +241,15 @@
     </ClCompile>
     <ClCompile Include="EffectManager.cpp">
       <Filter>EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>Map\Dungeon</Filter>
+    </ClCompile>
+    <ClCompile Include="TileNum.cpp">
+      <Filter>Map\TileNum</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomData.cpp">
+      <Filter>Map\Dungeon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

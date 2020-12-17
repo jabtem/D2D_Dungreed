@@ -17,6 +17,8 @@ Town::Town()
 	gMoveCnt = 0;
 	next_dungeonEat = 0;
 	isTownBGMON = false;
+	isOpenSound = false;
+	isCloseSound = false;
 	doorOpen = false;
 	doorAni = false;
 
@@ -150,13 +152,26 @@ void Town::Update(double frame)
 	if (doorAni)
 	{
 		key.Set_inputOk(false);//던전입구에 들어서면 잠시동안 입력을제한
+		if (!isOpenSound)
+		{
+			int dunOpen = sound.Get_Effect(DUNOPEN);
+			sound.EffectPlay(dunOpen);
+			isOpenSound = true;//한번만나오게
+		}
 		character.Set_Sate(Idle);
 		if (GetTickCount64() - curtime > 70)
 		{
 			next_dungeonEat += 480;
 			if (next_dungeonEat >= 3840)
 			{
-				character.Set_CharacterHide(true);//던전입구 애니메이션이 절반이상 지났을때 캐릭터를 감춤 
+				if (!isCloseSound)
+				{
+					int dunClose = sound.Get_Effect(DUNCLOSE);
+					sound.EffectPlay(dunClose);
+					isCloseSound = true;//한번만나오게
+				}
+
+				character.Set_CharacterHide(true);//던전입구 애니메이션이 입닫는애니메이션부근에서 캐릭터를 감춤 
 			}
 			else if (next_dungeonEat - 13440>=0)
 			{
@@ -299,6 +314,8 @@ void Town::Reset()
 	gMoveCnt = 0;
 	next_dungeonEat = 0;
 	isTownBGMON = false;
+	isOpenSound = false;
+	isCloseSound = false;
 	doorOpen = false;
 	doorAni = false;
 }
