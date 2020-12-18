@@ -156,6 +156,7 @@
     <ClInclude Include="DeviceFont.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="RoomData.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Game.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="DXUTsound.cpp" />
     <ClCompile Include="DeviceFont.cpp" />
     <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="RoomData.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Game.cpp" />

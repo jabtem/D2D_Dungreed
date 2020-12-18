@@ -25,14 +25,24 @@ enum gamework
 	DRAW = 2
 };
 
+//배경음
 enum BGM
 {
 	MENUBGM,//메뉴
 	TOWNBGM //마을
 };
+
+//효과음
 enum EFFECT
 {
 	SSWSWING,//숏소드 휘두르는효과음
 	DUNOPEN,//던전열림
 	DUNCLOSE//던전닫힘
+};
+
+//맵정보
+enum MAP
+{
+	TOWN,
+	DUNGEON
 };

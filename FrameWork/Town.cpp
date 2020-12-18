@@ -90,21 +90,6 @@ void Town::Update(double frame)
 	groundX = camera.Get_CameraX();
 	platformX = camera.Get_CameraX();
 
-
-	//for (auto iter = town_RecT.begin(); iter != town.town_RecT.end();iter++)
-	//{
-	//	collision.Coll_Player_Map(character.Ch_Rect, *iter);
-	//}
-	//나무 렌더 이어지게출력
-	//if (treeX - 1122 >= 0)
-	//{
-	//	treeX -= 1122;
-	//}
-	//else if (treeX + 1122 <= 0)
-	//{d
-	//	treeX += 1122;
-	//}
-
 	//우측이동시
 	if (groundX  >= GroundLength && groundX < GroundLength * 2 && gMoveCnt==0)
 	{
@@ -152,6 +137,7 @@ void Town::Update(double frame)
 	if (doorAni)
 	{
 		key.Set_inputOk(false);//던전입구에 들어서면 잠시동안 입력을제한
+		
 		if (!isOpenSound)
 		{
 			int dunOpen = sound.Get_Effect(DUNOPEN);
@@ -162,7 +148,7 @@ void Town::Update(double frame)
 		if (GetTickCount64() - curtime > 70)
 		{
 			next_dungeonEat += 480;
-			if (next_dungeonEat >= 3840)
+			if (next_dungeonEat >= 3840 && next_dungeonEat <13440)
 			{
 				if (!isCloseSound)
 				{
@@ -177,6 +163,8 @@ void Town::Update(double frame)
 			{
 				next_dungeonEat =0;//애니메이션 한사이클끝나면 0위치초기화
 				doorAni = false;//애니메이션이 한사이클만 출력되도록 설정
+
+				map.Set_isMApChange(true);
 			}
 			curtime = GetTickCount64();
 		}

@@ -74,6 +74,7 @@ class WeaponManager;
 #include "Mouse.h"
 
 //¸Ê
+#include "MapManager.h"
 #include "Town.h"
 #include "Dungeon.h"
 // ¹«±â

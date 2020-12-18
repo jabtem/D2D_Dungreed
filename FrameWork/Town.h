@@ -39,6 +39,7 @@ private :
 	double floorXpos;
 	double floorYpos;
 
+
 	double floorX;
 	double treeX;
 	double treeY;
@@ -60,11 +61,6 @@ private :
 public :
 	Town();
 	~Town();
-
-
-
-
-
 	
 	double skyY;
 

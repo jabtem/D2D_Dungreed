@@ -1,5 +1,5 @@
 #pragma once
-//입력한 배열숫자만큼 이차원배열생성
+//이미지를 타일맵처럼 관리하기위한 클래스
 class TileNum
 {
 public:

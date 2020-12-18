@@ -70,6 +70,9 @@
     <Filter Include="Map\TileNum">
       <UniqueIdentifier>{51abc5cc-c219-41d8-871b-45152495e28e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\MapManager">
+      <UniqueIdentifier>{f0ffbb66-bdb4-46d7-a214-b9030bd2e44d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -165,6 +168,9 @@
     <ClInclude Include="RoomData.h">
       <Filter>Map\Dungeon</Filter>
     </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>Map\MapManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="key.cpp">
@@ -250,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="RoomData.cpp">
       <Filter>Map\Dungeon</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Map\MapManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

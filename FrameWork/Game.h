@@ -3,6 +3,7 @@
 
 class Game : public Chap
 {
+	int MapState;//ÇöÀç ¸ÊÀÌ ¹«½¼¸ÊÀÎÁö ±¸ºĞ
 public:
 	Game();
 	~Game();
@@ -13,6 +14,7 @@ public:
 	virtual void Draw();
 
 	virtual void OnMessage(MSG* msg);
-};
 
+	void Set_MapState(int);
+};
 #endif

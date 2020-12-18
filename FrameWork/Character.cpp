@@ -149,6 +149,11 @@ void Character::Draw()
 	else
 		dv_font.DrawString("isLclick  :  False", 700, 250);
 
+	if(map.Get_isMapChange())
+		dv_font.DrawString("isMapChange :  True", 700, 300);
+
+	else
+		dv_font.DrawString("isMapChange  :  False", 700, 300);
 
 	TCHAR sztext[100];
 	sprintf_s(sztext, __TEXT("m_H : %d"), m_H);
@@ -211,11 +216,12 @@ void Character::Draw()
 	}
 }
 
-void Character::Reset()
+//맵교체가 이루어질때 캐릭터 포지션을 해당위치로 옮기기위한함수
+void Character::Reset(int _x, int _y)
 {
 	characterHide = false;
-	m_W = 0;
-	m_H = 400;
+	m_W = _x;
+	m_H = _y;
 }
 void Character::Set_Sate(int _state)//캐릭터 상태
 {

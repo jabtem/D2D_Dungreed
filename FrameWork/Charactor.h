@@ -81,8 +81,8 @@ public:
 	void Init();
 	void Update();
 	void Draw();
-	void Reset();
-	void Coll_Player_Map(RECT p, RECT m);
+	void Reset(int,int);
+	//void Coll_Player_Map(RECT p, RECT m);
 	void Jumping();
 	void Jump_Reset();;
 	double Get_CameraY();

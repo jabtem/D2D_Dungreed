@@ -1,7 +1,7 @@
 #include "Include.h"
-
 Game::Game()
 {
+	
 }
 
 Game::~Game()
@@ -10,6 +10,7 @@ Game::~Game()
 
 void Game::Init()
 {
+	MapState = TOWN;//기본적으로 마을에서 시작하도록
 	deltaTime.Reset();
 	town.Init();
 	character.Init();
@@ -25,8 +26,18 @@ void Game::Init()
 
 void Game::Draw()
 {
-	town.Draw();
-	dungeon.Draw();
+
+
+	switch (MapState)
+	{
+	case TOWN:
+		town.Draw();
+		break;
+	case DUNGEON:
+		dungeon.Draw();
+		break;
+	}
+
 	//monster.Draw();
 
 	weapon.Draw();
@@ -44,12 +55,35 @@ void Game::Update(double frame)
 
 	if (GetTickCount64() - time > frame)
 	{
-		
+
+		if (map.Get_isMapChange())
+		{
+			switch (MapState)
+			{
+			case TOWN:
+				//현재 맵이 마을일경우 던전으로 이동됨 
+				MapState = DUNGEON;
+				break;
+			case DUNGEON:
+				MapState = TOWN;
+				break;
+			}
+			map.Set_isMApChange(false);//맵교체가 한번이뤄졋으므로 상태복구
+		}
+
 		deltaTime.Update();
 		
 		key.Update();
+		switch (MapState)
+		{
+		case TOWN:
+			town.Update(100);
+			break;
+		case DUNGEON:
+			dungeon.Update();
+			break;
+		}
 		
-		town.Update(100);
 		character.Update();
 		weapon.Update();
 		camera.Update();
@@ -66,6 +100,7 @@ void Game::Update(double frame)
 		//sql.Update(frame+3000);
 
 		time = GetTickCount64();
+
 	}
 	
 
@@ -75,4 +110,9 @@ void Game::Update(double frame)
 void Game::OnMessage( MSG* msg )
 {
 
+}
+
+void Game::Set_MapState(int _Map)
+{
+	MapState = _Map;
 }
