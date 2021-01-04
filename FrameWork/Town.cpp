@@ -11,7 +11,6 @@ Town::Town()
 	SetRect(&Town_World, 0, 0, 7300, 1300);
 	floorX = 0;
 	treeX = 0;
-	skyY = 0;
 	groundX = 0;
 	gX = 0;
 	gMoveCnt = 0;
@@ -85,35 +84,35 @@ void Town::Update(double frame)
 
 	mountainY = 400 - cameraY*0.5;
 
-	mountainX = camera.Get_CameraX()*0.2f;
-	treeX = camera.Get_CameraX()*0.4f;
+	mountainX = static_cast<double>(camera.Get_CameraX())*0.2f;
+	treeX = static_cast<double>(camera.Get_CameraX()) *0.4f;
 	groundX = camera.Get_CameraX();
 	platformX = camera.Get_CameraX();
 
 	//우측이동시
-	if (groundX  >= GroundLength && groundX < GroundLength * 2 && gMoveCnt==0)
+	if (groundX  >= GroundLength && groundX < GroundLength * 2.0 && gMoveCnt==0)
 	{
 		gX -= GroundLength;
 		++gMoveCnt;
 	}
-	else if (groundX >= GroundLength * 2 && groundX < GroundLength * 3 && gMoveCnt == 1)
+	else if (groundX >= GroundLength * 2.0 && groundX < GroundLength * 3.0 && gMoveCnt == 1)
 	{
 		gX -= GroundLength;
 		++gMoveCnt;
 	}
-	else if (groundX >= GroundLength * 3 && groundX < GroundLength * 4 && gMoveCnt == 2)
+	else if (groundX >= GroundLength * 3.0 && groundX < GroundLength * 4.0 && gMoveCnt == 2)
 	{
 		gX -= GroundLength;
 		++gMoveCnt;
 	}
 
 	//좌측이동시
-	else if (groundX < GroundLength * 2 && groundX < GroundLength * 3 && gMoveCnt == 3)
+	else if (groundX < GroundLength * 2.0 && groundX < GroundLength * 3.0 && gMoveCnt == 3)
 	{
 		gX += GroundLength;
 		--gMoveCnt;
 	}
-	else if (groundX < GroundLength * 1 && groundX < GroundLength * 2 && gMoveCnt == 2)
+	else if (groundX < GroundLength && groundX < GroundLength * 2.0 && gMoveCnt == 2)
 	{
 		gX += GroundLength;
 		--gMoveCnt;
@@ -271,11 +270,6 @@ void Town::Draw()
 	}
 }
 
-double& Town::GetSkyY()
-{
-	return skyY;
-}
-
 void Town::SetPos(Position& p,int _x1, int _y1, int _x2, int _y2)
 {
 	p.x1 = _x1;
@@ -296,7 +290,6 @@ void Town::Reset()
 	
 	floorX = 0;
 	treeX = 0;
-	skyY = 0;
 	groundX = 0;
 	gX = 0;
 	gMoveCnt = 0;

@@ -21,6 +21,8 @@ private:
 	int cameraX;
 	int cameraY;
 	int roomnum;
+	RECT wall[20];//벽과 바닥
+	RECT RoomZero_World;//던전룸 0번의 월드맵
 };
 
 extern Dungeon dungeon;

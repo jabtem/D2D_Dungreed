@@ -16,6 +16,7 @@ public:
 	bool Get_Rlimit();
 	bool Get_Llimit();
 	bool Get_CamLock();
+	void Cam_Reset();
 	void Update();
 
 	int plcl;

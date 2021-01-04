@@ -189,3 +189,9 @@ bool Camera::Get_CamLock()
 {
 	return cameraLock;
 }
+
+void Camera::Cam_Reset()
+{
+	cameraX = 0;
+	cameraY = 0;
+}

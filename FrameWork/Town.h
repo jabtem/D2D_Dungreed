@@ -61,9 +61,6 @@ private :
 public :
 	Town();
 	~Town();
-	
-	double skyY;
-
 
 	void Init();
 	void Update(double frame);
