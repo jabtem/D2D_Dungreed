@@ -16,6 +16,7 @@ Collision::~Collision()
 void Collision::Coll_Character_Map(RECT p, RECT m)
 {
 	int PlayerY = character.Get_PlayerPosY();
+	int PlayerX = character.Get_PlayerPosX();
 	RECT p2;
 	SetRect(&p2, p.left + 1, p.top + 1, p.right + 1, p.bottom + 1);
 	if (IntersectRect(&rcTemp, &p, &m))
@@ -41,28 +42,31 @@ void Collision::Coll_Character_Map(RECT p, RECT m)
 				if(!character.Get_jumpUp()&&character.Get_IsJump())
 					character.Jump_Reset();
 			}
-			//else if (rcTemp.bottom == m.bottom) {
-			//	//isTDCol = true;
-			//	//character.m_H += tempH;
-			//}
+			else if (rcTemp.bottom == m.bottom) {
+				//isTDCol = true;
+				character.Set_PlayerPosY(PlayerY + tempH);
+				if (character.Get_jumpUp() && character.Get_IsJump())
+					character.Jump_Reset();
+			}
+		}
+
+		//谅快面倒
+		else if(tempW < tempH)
+		{
+			if (rcTemp.left==m.left)
+			{
+				//character.m_W -= rcTemp.right;
+				character.Set_PlayerPosX(PlayerX - tempW);
+			}
+			else if(rcTemp.right==m.right)
+				//character.m_W += rcTemp.right;
+				character.Set_PlayerPosX(PlayerX + tempW);
 		}
 		else
 		{
 			//character.Set_Gravity(9.8f);
 			isTBCol = false;
 		}
-		////谅快面倒
-		//else if(tempW < tempH)
-		//{
-		//	if (rcTemp.left==m.left)
-		//	{
-		//		//character.m_W -= rcTemp.right;
-		//		character.m_W -= tempW;
-		//	}
-		//	else if(rcTemp.right==m.right)
-		//		//character.m_W += rcTemp.right;
-		//		character.m_W += tempW;
-		//}
 	}
 	else
 	{

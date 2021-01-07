@@ -37,7 +37,9 @@ void Dungeon::Update()
 void Dungeon::Draw()
 {
 	//Ãæµ¹¸Ê
-	SetRect(&wall[0], 0, 640, 1408, 768);
+	SetRect(&wall[0], 0, 630, 1408, 768);
+	SetRect(&wall[1], 0, 0, 128, 768);
+	SetRect(&wall[2], 1280, 0, 1408, 384);
 	DrawRoom0();
 }
 

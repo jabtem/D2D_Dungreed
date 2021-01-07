@@ -145,8 +145,8 @@ void Camera::followCam(RECT p, RECT c, RECT w)
 	cameraY = p.top - 384;
 	if (cameraY < 0)
 		cameraY = 0;
-	else if (cameraY >w.bottom - 500)
-		cameraY = w.bottom - 500;
+	else if (cameraY > w.bottom-768)
+		cameraY = w.bottom-768;
 	//else
 	//	cameraY = 0;
 

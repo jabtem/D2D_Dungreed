@@ -8,7 +8,7 @@ Town::Town()
 	SetPos(g1,65, 505, 576, 575);
 	SetPos(g2,128, 385, 448, 448);
 	SetPos(p1, 328, 320, 496, 364);
-	SetRect(&Town_World, 0, 0, 7300, 1300);
+	SetRect(&Town_World, 0, 0, 7300, 1600);
 	floorX = 0;
 	treeX = 0;
 	groundX = 0;
@@ -139,6 +139,7 @@ void Town::Update(double frame)
 		
 		if (!isOpenSound)
 		{
+			sound.BGStop();
 			int dunOpen = sound.Get_Effect(DUNOPEN);
 			sound.EffectPlay(dunOpen);
 			isOpenSound = true;//한번만나오게
