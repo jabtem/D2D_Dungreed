@@ -75,6 +75,33 @@ void Collision::Coll_Character_Map(RECT p, RECT m)
 	}
 
 }
+
+
+//단순 던전룸 이동역역에 충돌햇는지 유무만확인
+void Collision::Coll_Character_MoveZone(RECT p, RECT z)
+{
+	RECT rcTemp2;//충돌여부확인용 임시렉트
+
+	if (IntersectRect(&rcTemp2, &p, &z))
+	{
+		int tempW = rcTemp2.right - rcTemp2.left;
+		int tempH = rcTemp2.bottom - rcTemp2.top;
+		
+		//좌우충돌만구분
+		if (tempW < tempH)
+		{
+			isRoomChange = true;
+			moveZone = z;
+		}
+		else
+		{
+			isRoomChange = false;
+			
+		}
+
+	}
+
+}
 bool Collision::Line_Line(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
 
 	float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
@@ -192,4 +219,19 @@ bool& Collision::Get_Trigger()
 bool Collision::Get_LineCol()
 {
 	return isLineCol;
+}
+
+bool Collision::Get_isRoomChange()
+{
+	return isRoomChange;
+}
+
+void Collision::Set_isRoomChange(bool _TF)
+{
+	isRoomChange = _TF;
+}
+
+RECT Collision::Get_MoveZone()
+{
+	return moveZone;
 }

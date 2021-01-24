@@ -9,9 +9,21 @@ RoomData::~RoomData()
 {
 }
 
-const int RoomData::Get_Room0(int row, int col)
+const int RoomData::Get_Room(int row, int col, int roomNum)
 {
-	return Room0[row][col];
+	switch (roomNum)
+	{
+	case 0:
+		return Room0[row][col];
+		break;
+	case 1:
+		return Room1[row][col];
+		break;
+	case 2:
+		return Room2[row][col];
+		break;
+	}
+	
 }
 
 //해당하는 던전룸의 가로 세로 크기를 반환
@@ -23,6 +35,16 @@ arrSize RoomData::Get_Size(int num)
 	case 0:
 		size.col = sizeof(Room0[0])/sizeof(int);
 		size.row = sizeof(Room0) / sizeof(Room0[0]);
+		return size;
+		break;
+	case 1:
+		size.col = sizeof(Room1[0]) / sizeof(int);
+		size.row = sizeof(Room1) / sizeof(Room1[0]);
+		return size;
+		break;
+	case 2:
+		size.col = sizeof(Room2[0]) / sizeof(int);
+		size.row = sizeof(Room2) / sizeof(Room2[0]);
 		return size;
 		break;
 	}

@@ -12,9 +12,11 @@ Character::Character()
 	curWeapon = Ssw;//초기기본장비를 숏소드로설정
 
 	gravity = 10.0f;//점프가 아닐때 평상시가해지는 중력값
+	
 	//ch_gravity = 9.8f;
 	//점프
 	jumpPower = 70.0f;
+	jumpGravity = 10.0f;//점프때 계산되는중력값
 	jumpTime = 0.0f;
 	isJump = false;
 	jumpUp = false;//점프중 올라가고있을때
@@ -101,8 +103,25 @@ void Character::Update()
 		curTime = GetTickCount64();
 	}
 	//if(!collision.Get_TBCol())
-	if(!isJump&&!isDash)
+	if (!isJump && !isDash)
 		m_H += gravity;
+
+
+	//자연스러운 중력을 구현하려면 어떻게해야하는가
+	////땅에있을땐 중력값 10으로초기화
+	//if (collision.Get_TBCol())
+	//{
+	//	gravity = 10.0f;
+	//}
+	////체공중일때는 1초마다 중력값 가속붙도록함 단 점프하고 떨어지는게아닐때 
+	//else if (!collision.Get_TBCol()&&!isJump)
+	//{
+	//	if (GetTickCount64() - durationflight>1000)
+	//	{
+	//		gravity += 10.0f;
+	//	}
+	//	durationflight = GetTickCount64();
+	//}
 
 	if (isDash)//우클릭시 대쉬하도록 구현
 	{
@@ -151,9 +170,11 @@ void Character::Draw()
 
 	if(map.Get_isMapChange())
 		dv_font.DrawString("isMapChange :  True", 700, 300);
-
 	else
 		dv_font.DrawString("isMapChange  :  False", 700, 300);
+
+
+
 
 	TCHAR sztext[100];
 	sprintf_s(sztext, __TEXT("m_H : %d"), m_H);
@@ -180,6 +201,13 @@ void Character::Draw()
 	sprintf_s(sztext12, __TEXT("nomy : %f"), nomy);
 	dv_font.DrawString(sztext12, 1100, 200);
 
+	//TCHAR sztext13[100];
+	//sprintf_s(sztext13, __TEXT("col left : %d"), collision.moveZone.left);
+	//dv_font.DrawString(sztext13, 1100, 300);
+
+	TCHAR sztext14[100];
+	sprintf_s(sztext14, __TEXT("gravity : %f"), gravity);
+	dv_font.DrawString(sztext14, 1100, 500);
 
 
 
@@ -243,7 +271,7 @@ void Character::Jumping()
 		collision.Get_TBCol() = false;
 	}
 		
-	int height = (jumpTime * jumpTime * (-gravity) / 2) + (jumpTime * jumpPower);
+	int height = (jumpTime * jumpTime * (-jumpGravity) / 2) + (jumpTime * jumpPower);
 
 	m_H = posY - height;
 
@@ -375,6 +403,8 @@ bool Character::Get_CharacterHide()
 	return characterHide;
 }
 
+
+//대쉬시 카메라 이동이 너무 안맞음 코드는남겨두되 시연에선 제외하도록함
 void Character::Dash()
 {
 	D3DXVECTOR2 dir(mouseP.x - (prePlayerX + CHARACTER_WIDTH * 0.5), mouseP.y - (prePlayerY - CHARACTER_HEIGHT * 0.5));//대쉬할방향

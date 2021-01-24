@@ -24,6 +24,7 @@ void SoundManager::Init()
 	/// <배경음악>
 	MenuBGM = AddSoundFile("./resources/sound/Ui/bgm/title.wav", true);//메뉴배경음악
 	TownBGM = AddSoundFile("./resources/sound/Ui/bgm/0.Town.wav", true);//마을배경음악
+	DungeonBGM = AddSoundFile("./resources/sound/Ui/bgm/1.JailField.wav", true);//던전배경음악
 	/// </배경음악>
 
 	/// <효과음>
@@ -120,6 +121,9 @@ int SoundManager::Get_BGM(int _BGM)
 	case TOWNBGM:
 		return TownBGM;
 		break;
+	case DUNGEONBGM:
+		return DungeonBGM;
+		break;
 	}
 }
 
@@ -129,8 +133,10 @@ int SoundManager::Get_Effect(int _Effect)
 	{
 	case SSWSWING:
 		return ssWEffect;
+		break;
 	case DUNOPEN:
 		return dungeonOpen;
+		break;
 	case DUNCLOSE:
 		return dungeonClose;
 		break;

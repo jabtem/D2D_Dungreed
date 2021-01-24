@@ -170,9 +170,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Mysql.h" />
     <ClInclude Include="Over.h" />
-    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="Target.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Shortsword.h" />
@@ -204,9 +202,7 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Mysql.cpp" />
     <ClCompile Include="Over.cpp" />
-    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="Target.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>

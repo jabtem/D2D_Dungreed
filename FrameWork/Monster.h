@@ -4,64 +4,40 @@
 
 class Monster
 {
-	typedef struct Mon
-	{
-		double init_x, init_y;				// 첫 출현위치
-		double x, y;						// 재출현
-		int score;							// 이넘잡으면 먹는점수
-		double speed; 
-		double scale;
-		bool life;							// 죽었니 살았니
-		bool Death;
-		int pos;							// 향하는 방향
-		double dx, dy, dz, drx, dry, drz;	// 데미지존
-		double w;
-		bool ShotStart;
-		bool Shot;
-		double bulletX;
-		double bulletY;
-		double bulletPX1;
-		double bulletPY1;
-		double bulletPX2;
-		double bulletPY2;
-		double bdx, bdy;
-		int fishkind;
-	};
+private:
+	Sprite Idle;
+	Sprite Attack;
+	Sprite Move;
+	Sprite Destory;//몹죽을때 폭발연출
+
+
+	DWORD animTime;//애니메이션 간격
+	//애니메이션의 상태와 방향
+	int state;
+	int direction;
+
+	bool live;
+
+	int x;//몬스터 x좌표
+	int y;//몬스터 y좌표
+
+	int cameraX;//카메라x좌표
+	int cameraY;//카메라y좌표
+
+	int MonsterX;
+	int MonsterY;
+
+	float next_Idle, next_Move, next_Attack, next_Die;
 
 	
 public:
 	Monster(void);
 	~Monster(void);
-	Sprite fishimg1[15], fishimg2[30], Boomimg1[26];
 
-	Mon fish[2];
-	int m_Acount, m_Bcount, m_Bulletcount;
-
-	 DWORD FishMoveTime;
-	 DWORD FishCountTime;
-	 DWORD LifeTime;
-
-	 DWORD BoomTime1;
-	 bool m_Boom1;
-	 int m_BoomCount1;
-	 double m_BoomX1;
-	 double m_BoomY1;
-
-
-
-	 RECT m_rc;
-	 double m_Left;
-	 double m_High;
-
-	 int m_FishLifeSelect;
-
-	void GoodFunction(double init_x, double init_y, double x, double y, int score, double speed, 
-						   double scale, int pos, double dx, double dy, double dz, double w, int fishkind, int num);
 	void Init();
 	void Update();
 	void Draw();
-	void Boom();
-	void Reset();
+	void Spawn(int ,int);
 
 };
 

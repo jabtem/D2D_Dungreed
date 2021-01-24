@@ -2,6 +2,7 @@
 #include "Include.h"
 
 enum Charactor_Animation { Idle, Move, Jump, Die };
+enum Enemy_Animation { EIdle, EMove, EAttack, EDie };
 enum Direction{Top, Down, Left, Right};
 enum EquipWeapon{Ssw};
 
@@ -29,7 +30,8 @@ enum gamework
 enum BGM
 {
 	MENUBGM,//메뉴
-	TOWNBGM //마을
+	TOWNBGM, //마을
+	DUNGEONBGM //던전
 };
 
 //효과음

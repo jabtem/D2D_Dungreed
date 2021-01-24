@@ -18,7 +18,7 @@ void Game::Init()
 	weapon.init();
 	Emanager.Init();
 	
-	//monster.Init();
+	monster.Init();
 
 	Gmanager.Init();
 	// 데이타 베이스///////////////////
@@ -40,7 +40,6 @@ void Game::Draw()
 	}
 
 	//monster.Draw();
-
 	weapon.Draw();
 	character.Draw();
 	Emanager.Draw();
@@ -64,7 +63,7 @@ void Game::Update(double frame)
 			case TOWN:
 				//현재 맵이 마을일경우 던전으로 이동됨 
 				MapState = DUNGEON;
-				character.Reset(200, 400);
+				character.Reset(200, 500);
 				break;
 			case DUNGEON:
 				//현재 맵이 던전일경우 마을로이동
@@ -74,6 +73,7 @@ void Game::Update(double frame)
 			}
 			//맵교체가 끝나면 키잠금비활성, 카메라초기화
 			key.Set_inputOk(true);
+			mouse.Set_clickOk(true);
 			camera.Cam_Reset();
 			map.Set_isMApChange(false);//맵교체가 한번이뤄졋으므로 상태복구
 		}
@@ -98,14 +98,10 @@ void Game::Update(double frame)
 
 	
 		
-		//monster.Update();
-		// 입 맛에 맞게
+		monster.Update();
 
 		Emanager.Update();
 		Gmanager.Update();
-		// 데이타 베이스///////////////////
-		// 입 맛에 맞게 (여기선 안쓰임..프레임 값이 필요 할때만.. 그냥 방법만...)
-		//sql.Update(frame+3000);
 
 		time = GetTickCount64();
 

@@ -127,9 +127,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 			dv_font.Device9->BeginScene();
 			if (g_Mng.n_Chap == MENU) {
-
+				//배경색변경
 				dv_font.Device9->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(106, 174, 247), 0, 0);
 
+			}
+			else if (g_Mng.n_Chap == GAME)
+			{
+				dv_font.Device9->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(51, 49, 67), 0, 0);
 			}
 			else
 				dv_font.Device9->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
@@ -182,7 +186,7 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 
 	/// <좌클릭>
 	case WM_LBUTTONDOWN:
-		if (g_Mng.n_Chap == GAME)//인게임화면일때만 적용
+		if (g_Mng.n_Chap == GAME&&mouse.Get_clickOk())//인게임화면일때만 적용
 			mouse.Set_isLclik(true);
 
 		return FALSE;

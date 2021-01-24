@@ -54,7 +54,6 @@ void Key::Update()
 		{
 			if (GetTickCount64() - KeyTime > 200)
 			{
-				monster.Reset();
 				KeyTime = GetTickCount64();
 			}
 

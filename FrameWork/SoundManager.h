@@ -16,8 +16,14 @@ private:
 	int m_Index;
 	Channel* m_pBGChannel;
 	float m_volum;
+
+	//배경음
 	int MenuBGM;//메뉴배경음
 	int TownBGM;//마을배경음
+	int DungeonBGM;//던전배경음
+
+
+	//효과음
 	int ssWEffect;//숏소드 효과음
 	int dungeonOpen;
 	int dungeonClose;

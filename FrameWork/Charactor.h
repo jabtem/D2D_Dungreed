@@ -18,9 +18,11 @@ private:
 	int state;
 	int direction;
 
-	DWORD curTime;
+	DWORD curTime;//애니메이션간격
+	DWORD durationflight; //체공시간
 
-	float gravity;//점프시계산되는 중력가속도
+	float gravity;//평시중력
+	float jumpGravity;//점프시 계산되는 중력
 	float ch_gravity;//캐릭터에 가해지는 중력값(사용X)
 	
 	//점프

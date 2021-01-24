@@ -22,9 +22,6 @@
     <Filter Include="Object\캐릭터">
       <UniqueIdentifier>{394a602d-0d11-42cc-aa37-f7647f440391}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\타겟">
-      <UniqueIdentifier>{05d597ef-9e58-4611-b83f-f54f7931552b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Enum">
       <UniqueIdentifier>{140d7666-2b2e-4fff-b1e4-594aad2ba9a3}</UniqueIdentifier>
     </Filter>
@@ -105,17 +102,11 @@
     <ClInclude Include="DXUTsound.h">
       <Filter>D3D Core\header</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>SoundManager</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>GameManager</Filter>
     </ClInclude>
     <ClInclude Include="DeviceFont.h">
       <Filter>D3D Core\header</Filter>
-    </ClInclude>
-    <ClInclude Include="Target.h">
-      <Filter>Object\타겟</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>Object\몬스터</Filter>
@@ -194,17 +185,11 @@
     <ClCompile Include="DXUTsound.cpp">
       <Filter>D3D Core\source</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>SoundManager</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>GameManager</Filter>
     </ClCompile>
     <ClCompile Include="DeviceFont.cpp">
       <Filter>D3D Core\source</Filter>
-    </ClCompile>
-    <ClCompile Include="Target.cpp">
-      <Filter>Object\타겟</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>Object\몬스터</Filter>

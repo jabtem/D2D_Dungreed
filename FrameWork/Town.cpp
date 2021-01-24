@@ -135,11 +135,13 @@ void Town::Update(double frame)
 
 	if (doorAni)
 	{
-		key.Set_inputOk(false);//던전입구에 들어서면 잠시동안 입력을제한
+		//던전입구에 들어서면 잠시동안 입력을제한
+		key.Set_inputOk(false);
+		mouse.Set_clickOk(false);
 		
 		if (!isOpenSound)
 		{
-			sound.BGStop();
+			//sound.BGStop();
 			int dunOpen = sound.Get_Effect(DUNOPEN);
 			sound.EffectPlay(dunOpen);
 			isOpenSound = true;//한번만나오게

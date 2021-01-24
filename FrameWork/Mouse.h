@@ -16,11 +16,14 @@ public:
 	bool Get_Lclick();
 	void Set_isRclick(bool);
 	bool Get_isRclick();
+	void Set_clickOk(bool);
+	bool Get_clickOk();
 	
 
 private:
 	POINT mousePoint;
 	bool Lclick;
+	bool clikOk;//마우스 클릭가능여부
 	bool isLclick;
 	bool isRclick;
 };
