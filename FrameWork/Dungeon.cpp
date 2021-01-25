@@ -29,6 +29,10 @@ void Dungeon::init()
 	char FileName[256];
 	sprintf_s(FileName, "./resources/images/Map/tileAtlas3.png");//한칸에 64,64 픽셀씩잘라 타일맵으로사용
 	DungeonAtlas.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
+
+	sprintf_s(FileName, "./resources/images/Map/fadein.png");//한칸에 64,64 픽셀씩잘라 타일맵으로사용
+	fadeIn.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
+
 }
 
 void Dungeon::Update()
@@ -122,8 +126,6 @@ void Dungeon::Draw()
 		SetRect(&wall[2], 1280, 0, 1408, 384);
 		SetRect(&moveZone[0], 1344+32, 384, 1408, 640);//이동영역
 		DrawRoom(0);//던전 0번룸 그림
-		mon[0].Spawn(400, 640);
-		mon[0].Draw();
 		break;
 	case 1:
 		//바닥
@@ -138,10 +140,10 @@ void Dungeon::Draw()
 		SetRect(&moveZone[1], 64*24+32, 64 * 6, 64*25, 640);//이동영역
 		
 		DrawRoom(1);//던전 1번룸 그림
-		mon[1].Spawn(600, 640);
+		mon[0].Spawn(600, 640);
+		mon[0].Draw();
+		mon[1].Spawn(800, 640);
 		mon[1].Draw();
-		mon[2].Spawn(800, 640);
-		mon[2].Draw();
 
 		break;
 	case 2:

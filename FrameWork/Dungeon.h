@@ -19,8 +19,9 @@ public:
 private:
 
 	Monster mon[3];//몬스터를 최대 3마리까지배치
-
+	bool fight;//몬스터와 전투시작유무
 	Sprite DungeonAtlas;
+	Sprite fadeIn;//던전룸 이동시 페이드인효과용 
 	TileNum* tile;
 	RoomData* roominfo;
 
