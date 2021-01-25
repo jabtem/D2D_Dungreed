@@ -17,6 +17,9 @@ public:
 	bool col;
 
 private:
+
+	Monster mon[3];//몬스터를 최대 3마리까지배치
+
 	Sprite DungeonAtlas;
 	TileNum* tile;
 	RoomData* roominfo;

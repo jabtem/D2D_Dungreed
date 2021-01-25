@@ -12,8 +12,8 @@ Monster::Monster(void)
 	next_Idle = 0;
 	next_Move = 0;
 	next_Attack = 0;
-	x = 0;
-	y = 0;
+	x = 400;
+	y = 640;
 
 	direction = Right;//캐릭터가 기본이 오른쪽이므로 반대인 왼쪽을 기본방향으로잡음
 }
@@ -90,7 +90,7 @@ void Monster::Draw()
 		case EIdle:
 			if (direction == Right)
 			{
-				Idle.RenderDraw(MonsterX, 0, next_Idle, 0, next_Idle + 132, 120, 0, 1.0, 1.0);
+				Idle.RenderDraw(MonsterX, MonsterY-120, next_Idle, 0, next_Idle + 132, 120, 0, 1.0, 1.0);
 			}
 			else if (direction == Left)
 			{
