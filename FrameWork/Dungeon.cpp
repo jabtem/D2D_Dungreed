@@ -24,6 +24,8 @@ Dungeon::~Dungeon()
 }
 void Dungeon::init()
 {
+	alpha = 255;
+	speed = 3000;
 	for (int i = 0;i < 3;i++)
 		mon[i].Init();
 	char FileName[256];
@@ -35,8 +37,13 @@ void Dungeon::init()
 
 }
 
-void Dungeon::Update()
+void Dungeon::Update(float frame)
 {
+	alpha -= speed * frame / 1000;
+	if (alpha <= 0)
+	{
+		alpha = 0;
+	}
 	if (!isDungeonBGMON)
 	{
 		int DBGM = sound.Get_BGM(DUNGEONBGM);//BGM파일불러옴
@@ -78,6 +85,7 @@ void Dungeon::Update()
 	//방이동
 	if (collision.Get_isRoomChange())
 	{
+		resetAlpha();
 		//이동존에 닿았고 현재방번호에따라 구분
 		switch (curRoomNum)
 		{
@@ -121,10 +129,11 @@ void Dungeon::Draw()
 	{
 	case 0:
 		//0번룸 세팅
+
 		SetRect(&wall[0], 0, 630, 1408, 768);
 		SetRect(&wall[1], 0, 0, 128, 768);
-		SetRect(&wall[2], 1280, 0, 1408, 384);
 		SetRect(&moveZone[0], 1344+32, 384, 1408, 640);//이동영역
+		SetRect(&wall[2], 1280, 0, 1408, 384);
 		DrawRoom(0);//던전 0번룸 그림
 		break;
 	case 1:
@@ -153,7 +162,8 @@ void Dungeon::Draw()
 		break;
 	}
 	//0번룸 충돌맵
-
+	fadeIn.SetColor(255, 255, 255, alpha);//투명도적용
+	fadeIn.Draw(0, 0, 0, 1.0, 1.0);
 }
 
 //던전룸 렌더
@@ -186,4 +196,9 @@ void Dungeon::resetRect()
 	int rectsize2 = sizeof(moveZone) / sizeof(RECT);//RECT 배열 크기
 	for (int i = 0;i < rectsize2;++i)
 		moveZone[i] = reset;
+}
+
+void Dungeon::resetAlpha()
+{
+	alpha = 255;
 }

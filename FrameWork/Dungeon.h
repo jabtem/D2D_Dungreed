@@ -9,7 +9,7 @@ public:
 	Dungeon();
 	~Dungeon();
 	void init();
-	void Update();
+	void Update(float);
 	void Draw();
 	void DrawRoom(int);
 	void DrawTile(float,float,int);
@@ -17,7 +17,8 @@ public:
 	bool col;
 
 private:
-
+	float alpha;//페이드인 알파값
+	float speed;//페이드인 속도
 	Monster mon[3];//몬스터를 최대 3마리까지배치
 	bool fight;//몬스터와 전투시작유무
 	Sprite DungeonAtlas;
@@ -40,6 +41,7 @@ private:
 	RECT RoomOne_World;//던전룸 1번의 월드맵
 	RECT RoomTwo_World;//던전룸 2번의 월드맵
 	RECT ColZone; //충돌한 이동렉트
+	void resetAlpha();//페이드인효과 투명도리셋
 	void resetRect();
 };
 

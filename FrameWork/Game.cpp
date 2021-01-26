@@ -87,7 +87,7 @@ void Game::Update(double frame)
 			town.Update(100);
 			break;
 		case DUNGEON:
-			dungeon.Update();
+			dungeon.Update(frame);
 			break;
 		}
 		
