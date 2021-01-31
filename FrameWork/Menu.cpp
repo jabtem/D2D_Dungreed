@@ -66,6 +66,7 @@ void Menu::Draw()
 	menuimg1.Render(mx, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg1.Render(mx+2530, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg.Render(350, 80, 0, 1.0, 1.0); //이미지출력
+	mouse.Draw();
 
 }
 

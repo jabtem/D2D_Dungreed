@@ -38,15 +38,13 @@ void Game::Draw()
 		dungeon.Draw();
 		break;
 	}
-
-	//monster.Draw();
 	weapon.Draw();
 	character.Draw();
+	mouse.Draw();
 	Emanager.Draw();
 	Gmanager.Draw();
 
-	// 데이타 베이스///////////////////
-	//sql.Draw();
+
 }
 
 void Game::Update(double frame)

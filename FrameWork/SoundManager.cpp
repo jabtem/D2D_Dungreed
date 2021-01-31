@@ -3,7 +3,9 @@ SoundManager sound;
 SoundManager::SoundManager()
 {
 	System_Create(&m_pSystem);
+	System_Create(&m_pSystem2);
 	m_pSystem->init(10, FMOD_INIT_NORMAL, 0);
+	m_pSystem2->init(10, FMOD_INIT_NORMAL, 0);
 	m_Index = 0;
 	m_volum = 1.0f;
 	m_pBGChannel = nullptr;
@@ -18,6 +20,8 @@ SoundManager::~SoundManager()
 	m_SoundList.clear();
 	m_pSystem->release();
 	m_pSystem->close();
+	m_pSystem2->release();
+	m_pSystem2->close();
 }
 void SoundManager::Init()
 {
@@ -28,9 +32,9 @@ void SoundManager::Init()
 	/// </배경음악>
 
 	/// <효과음>
-	ssWEffect = AddSoundFile("./resources/sound/MeleeWeapon/generalAttack.wav", false);//숏쇼드 효과음
-	dungeonOpen = AddSoundFile("./resources/sound/DungreedSound/DungeonOpen.wav", false);//던전입구 열리는효과음
-	dungeonClose = AddSoundFile("./resources/sound/DungreedSound/DungeonClose.wav", false);//던전입구 닫히는 효과음
+	ssWEffect = AddEffectFile("./resources/sound/MeleeWeapon/generalAttack.wav", false);//숏쇼드 효과음
+	dungeonOpen = AddEffectFile("./resources/sound/DungreedSound/DungeonOpen.wav", false);//던전입구 열리는효과음
+	dungeonClose = AddEffectFile("./resources/sound/DungreedSound/DungeonClose.wav", false);//던전입구 닫히는 효과음
 	/// </효과음>
 
 }
@@ -53,12 +57,32 @@ int SoundManager::AddSoundFile(std::string _fullpath, bool  _IsLoop)
 	m_SoundList.insert(std::make_pair(m_Index, pSound));
 	return m_Index++;
 }
+int SoundManager::AddEffectFile(std::string _fullpath, bool  _IsLoop)
+{
+	auto Find = m_CheckList.find(_fullpath);
+	if (Find != m_CheckList.end())
+	{
+		return Find->second;
+	}
+	Sound* pSound = nullptr;
+	int Mode = FMOD_HARDWARE | (_IsLoop ? FMOD_LOOP_NORMAL | FMOD_DEFAULT : FMOD_LOOP_OFF);
+	m_pSystem2->createSound(_fullpath.c_str(), Mode, 0, &pSound);
+	if (pSound == nullptr)
+	{
+		return -1;
+	}
+	m_CheckList.insert(std::make_pair(_fullpath, m_Index));
+	m_SoundList.insert(std::make_pair(m_Index, pSound));
+	return m_Index++;
+}
 void SoundManager::EffectPlay(int _SoundNum)
 {
 	auto Find = m_SoundList.find(_SoundNum);
 	Channel* pChannel = nullptr;
+	
+	m_pSystem2->playSound(FMOD_CHANNEL_FREE, Find->second, 0, &pChannel);
 
-	m_pSystem->playSound(FMOD_CHANNEL_FREE, Find->second, 0, &pChannel);
+	test = pChannel;
 }
 void SoundManager::BGPlay(int _SoundNum)
 {
@@ -79,6 +103,7 @@ void SoundManager::BGMChange(int _SoundNum)
 	BGPlay(_SoundNum);
 }
 
+//효과음한번만나게 하기위함
 void SoundManager::SoundPlay(int _SoundNum)
 {
 	isEffectPlay = false;
@@ -142,4 +167,10 @@ int SoundManager::Get_Effect(int _Effect)
 		break;
 
 	}
+}
+
+//배경채널 상태 확인용 테스트
+Channel* SoundManager::Get_Test()
+{
+	return m_pBGChannel;
 }

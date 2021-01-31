@@ -68,10 +68,6 @@ void EffectManager::Update()
 //상시로 좌표를받는게아닌 마우스 클릭한 시점의 캐릭터의 x,y값을받아 해당지점에 이펙트를 출력해야함
 void EffectManager::Draw()
 {
-	TCHAR sztext[100];
-	sprintf_s(sztext, __TEXT("andgleR : %f"), angleR2);//단순각도확인용
-	dv_font.DrawString(sztext, 1100, 400);
-
 
 	if (Gmanager.m_GameStart == true) {
 		//if (PlayerDirection == Right)//오른쪽

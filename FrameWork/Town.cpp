@@ -141,7 +141,7 @@ void Town::Update(double frame)
 		
 		if (!isOpenSound)
 		{
-			//sound.BGStop();
+			sound.BGStop();
 			int dunOpen = sound.Get_Effect(DUNOPEN);
 			sound.EffectPlay(dunOpen);
 			isOpenSound = true;//한번만나오게

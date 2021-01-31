@@ -26,13 +26,14 @@ void Dungeon::init()
 {
 	alpha = 255;
 	speed = 3000;
-	for (int i = 0;i < 3;i++)
+	int monarrSize = sizeof(mon) / sizeof(Monster);//RECT 배열 크기
+	for (int i = 0;i < monarrSize;i++)
 		mon[i].Init();
 	char FileName[256];
 	sprintf_s(FileName, "./resources/images/Map/tileAtlas3.png");//한칸에 64,64 픽셀씩잘라 타일맵으로사용
 	DungeonAtlas.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
 
-	sprintf_s(FileName, "./resources/images/Map/fadein.png");//한칸에 64,64 픽셀씩잘라 타일맵으로사용
+	sprintf_s(FileName, "./resources/images/Map/fadein.png");//페이드인용 단순 검은화면이미지
 	fadeIn.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
 
 }
@@ -47,9 +48,9 @@ void Dungeon::Update(float frame)
 	if (!isDungeonBGMON)
 	{
 		int DBGM = sound.Get_BGM(DUNGEONBGM);//BGM파일불러옴
-		//sound.BGReset();
-		//sound.BGPlay(DBGM);
-		sound.BGMChange(DBGM);
+		sound.BGReset();
+		sound.BGPlay(DBGM);
+		//sound.BGMChange(DBGM);
 		isDungeonBGMON = true;
 	}
 
@@ -120,7 +121,6 @@ void Dungeon::Update(float frame)
 	}
 	mon[0].Update();
 	mon[1].Update();
-	mon[2].Update();
 }
 
 void Dungeon::Draw()

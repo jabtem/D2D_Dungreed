@@ -133,7 +133,9 @@ void Character::Update()
 
 void Character::Draw()
 {
-	if(collision.Get_TBCol())
+
+#pragma region 디버그용
+	/*if(collision.Get_TBCol())
 		dv_font.DrawString("Rectcol :  True", 400, 0);
 	else
 		dv_font.DrawString("Rectcol :  False", 400, 0);
@@ -201,13 +203,19 @@ void Character::Draw()
 	sprintf_s(sztext12, __TEXT("nomy : %f"), nomy);
 	dv_font.DrawString(sztext12, 1100, 200);
 
-	//TCHAR sztext13[100];
-	//sprintf_s(sztext13, __TEXT("col left : %d"), collision.moveZone.left);
-	//dv_font.DrawString(sztext13, 1100, 300);
+	TCHAR sztext13[100];
+	sprintf_s(sztext13, __TEXT("BgChanel : %d"), sound.Get_Test());
+	dv_font.DrawString(sztext13, 1100, 300);
+
 
 	TCHAR sztext14[100];
 	sprintf_s(sztext14, __TEXT("gravity : %f"), gravity);
 	dv_font.DrawString(sztext14, 1100, 500);
+
+	TCHAR sztext15[100];
+	sprintf_s(sztext15, __TEXT("EfChanel : %d"), sound.test);
+	dv_font.DrawString(sztext15, 1100, 400);*/
+#pragma endregion
 
 
 

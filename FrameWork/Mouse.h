@@ -7,7 +7,9 @@ class Mouse
 public:
 	Mouse();
 	~Mouse();
-	void Update();
+	void Init();
+	void Draw();
+	void Update();//메시지로 실시간으로 마우스좌표를 받아오기때문에 현재필요x 필요시사용하기위해 선언만해둠
 	void Set_MousePoint(int, int);
 	POINT Get_MousePoint();
 	void Set_isLclik(bool);
@@ -22,6 +24,8 @@ public:
 
 private:
 	POINT mousePoint;
+	Sprite MenuCursor;
+	Sprite GameCursor;
 	bool Lclick;
 	bool clikOk;//마우스 클릭가능여부
 	bool isLclick;

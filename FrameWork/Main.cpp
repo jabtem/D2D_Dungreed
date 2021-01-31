@@ -63,8 +63,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 	// WS_POPUP 빼면 테투리가 생긴다~
 	g_hWnd = CreateWindowEx( NULL, wc.lpszClassName, 
-		"Game", 
-		WS_EX_TOPMOST | WS_POPUP, 
+		"Dungreed", 
+		WS_OVERLAPPEDWINDOW/*WS_EX_TOPMOST | WS_POPUP*/,
 		X, Y, W, H,
 		NULL, NULL, wc.hInstance, NULL ) ;
 
@@ -94,6 +94,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 	//모든챕터 한번 Init
 	sound.Init();//사운드 설정
+	mouse.Init();//마우스 커서이미지설정
 	for(int i=0; i<TOTALCHAP; i++)
 		g_Mng.chap[i]->Init();
 
@@ -195,10 +196,14 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 
 	/// <우클릭>
 	case WM_RBUTTONDOWN:
-		if (g_Mng.n_Chap == GAME)
-			mouse.Set_isRclick(true);
+		//대쉬 미완성
+		//if (g_Mng.n_Chap == GAME)
+		//	mouse.Set_isRclick(true);
 	/// </summary>
-
+	
+	case WM_SETCURSOR:
+		SetCursor(NULL);//기본마우스커서 안보이게설정
+		break;
 	}
 	return DefWindowProc( g_hWnd, uMsg, wParam, lParam ) ;
 }

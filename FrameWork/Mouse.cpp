@@ -12,6 +12,22 @@ Mouse::~Mouse()
 {
 }
 
+void Mouse::Init()
+{
+	char FileName[256];
+	sprintf_s(FileName, "./resources/images/common/cursor/BasicCursor.png");
+	MenuCursor.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
+	sprintf_s(FileName, "./resources/images/common/cursor/ShootingCursor2.png");
+	GameCursor.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
+}
+void Mouse::Draw()
+{
+	if(g_Mng.n_Chap == MENU)
+		MenuCursor.Render(mousePoint.x-38, mousePoint.y-38, 0, 1, 1);
+	else if(g_Mng.n_Chap == GAME)
+		GameCursor.Render(mousePoint.x-42, mousePoint.y-42, 0, 1, 1);
+}
+
 void Mouse::Set_MousePoint(int x, int y)
 {
 	mousePoint.x = x;

@@ -49,9 +49,6 @@
     <Filter Include="Weapon\WeaponManager">
       <UniqueIdentifier>{5caa06e1-1b1c-4a94-9f09-95e9ac4c8e50}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Weapon\숏소드%28안씀%29">
-      <UniqueIdentifier>{281c103d-e798-4a8a-a23e-c761b1ad2e02}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mouse">
       <UniqueIdentifier>{c00fcee3-9085-4141-b4e1-b7af4ca26959}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,9 @@
     </Filter>
     <Filter Include="Map\MapManager">
       <UniqueIdentifier>{f0ffbb66-bdb4-46d7-a214-b9030bd2e44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon\숏소드%28미사용%29">
+      <UniqueIdentifier>{281c103d-e798-4a8a-a23e-c761b1ad2e02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +136,7 @@
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="Shortsword.h">
-      <Filter>Weapon\숏소드%28안씀%29</Filter>
+      <Filter>Weapon\숏소드%28미사용%29</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Weapon\WeaponManager</Filter>
@@ -162,6 +162,7 @@
     <ClInclude Include="MapManager.h">
       <Filter>Map\MapManager</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="key.cpp">
@@ -219,7 +220,7 @@
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="Shortsword.cpp">
-      <Filter>Weapon\숏소드%28안씀%29</Filter>
+      <Filter>Weapon\숏소드%28미사용%29</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Weapon\WeaponManager</Filter>
@@ -245,5 +246,8 @@
     <ClCompile Include="MapManager.cpp">
       <Filter>Map\MapManager</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FrameWork.rc" />
   </ItemGroup>
 </Project>

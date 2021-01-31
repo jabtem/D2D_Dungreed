@@ -12,7 +12,8 @@ using namespace FMOD;
 class SoundManager
 {
 private:
-	System* m_pSystem;
+	System* m_pSystem;//배경음용
+	System* m_pSystem2;//효과음용
 	int m_Index;
 	Channel* m_pBGChannel;
 	float m_volum;
@@ -30,6 +31,9 @@ private:
 	bool isEffectPlay;
 
 public:
+	//이펙트채널 확인용
+	Channel* test;
+
 	std::map<std::string, int> m_CheckList;
 	std::map<int, Sound*> m_SoundList;
 	SoundManager();
@@ -38,6 +42,7 @@ public:
 	int Get_BGM(int);
 	int Get_Effect(int);
 	int AddSoundFile(std::string _fullpath, bool  _IsLoop);
+	int AddEffectFile(std::string _fullpath, bool  _IsLoop);
 
 	void EffectPlay(int _SoundNum);
 	void BGPlay(int _SoundNum);
@@ -47,5 +52,7 @@ public:
 	void  VolumDown();
 	void  VolumUp();
 	void BGReset();
+
+	Channel* Get_Test();
 };
 extern SoundManager sound;
