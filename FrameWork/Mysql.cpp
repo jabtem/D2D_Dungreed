@@ -58,8 +58,8 @@ void Mysql::save()
 	//// 우린 에디터 박스가 필요////////////////
 
 	// 테이블 저장 값 입력
-	sprintf_s(name, "%s", "wsj");
-	sprintf_s(address, "%s", "777");
+	sprintf_s(name, "%s", "Dungreed");
+	sprintf_s(address, "%s", "1234");
 
 	///////////////////////////////////////////
 	
