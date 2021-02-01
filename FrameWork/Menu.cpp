@@ -59,10 +59,26 @@ void Menu::Update(double frame)
 	}
 	CheckPlayOn();
 	CheckExitOn();
+
+
+	if (mouse.Get_isLclick())
+	{
+		mouse.Set_isLclik(false);//마우스클릭을 한번만인식하도록
+
+		if(cursorOnPlay)
+			g_Mng.n_Chap = GAME;
+		if (cursorOnExit)
+			PostQuitMessage(0);
+
+		
+	}
+
 }
 
 void Menu::Draw()
 {
+
+
 	//683-72
 	menuimg2.Render(mx2, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg2.Render(-2816+mx2, 0, 0, 1.0, 1.0); //이미지출력

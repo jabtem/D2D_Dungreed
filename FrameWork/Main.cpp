@@ -187,7 +187,7 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 
 	/// <좌클릭>
 	case WM_LBUTTONDOWN:
-		if (g_Mng.n_Chap == GAME&&mouse.Get_clickOk())//인게임화면일때만 적용
+		if ((g_Mng.n_Chap == MENU ||g_Mng.n_Chap == GAME)&&mouse.Get_clickOk())//인게임화면일때만 적용
 			mouse.Set_isLclik(true);
 
 		return FALSE;

@@ -121,7 +121,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	int PlayerY = character.Get_PlayerPosY();//캐릭터의 실제 Y좌표를받아옴
 	RECT p;//플레이어의 충돌영역을 받아올 RECT
 	float height = _p.bottom - _p.top;//캐릭터 세로사이즈
-	SetRect(&p, _p.left , _p.top +(height*0.6), _p.right , _p.bottom);//기존플레이어 rect의 절반만큼만할당
+	SetRect(&p, _p.left , _p.top +(height*0.6), _p.right , _p.bottom);//플레이어 높이의 60%만큼만 충돌영역할당
 
 	//충돌여부만 구분(상하)
 	bool top = Line_Line(l.x1, l.y1, l.x2, l.y2, p.left, p.top, p.right, p.top);
@@ -150,7 +150,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	{
 		isLineCol = false;
 		triggercnt++;
-		if (triggercnt > 5)
+		if (triggercnt > 3)
 		{
 			trigger = false;
 			triggercnt = 0;
@@ -168,7 +168,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	{
 		isLineCol = false;
 		triggercnt++;
-		if (triggercnt > 5)
+		if (triggercnt > 3)
 		{
 			trigger = false;
 			triggercnt = 0;
@@ -190,7 +190,7 @@ void Collision::Line_RECT(Line l, RECT _p) {
 	{
 		isLineCol = false;
 		triggercnt++;
-		if (triggercnt > 5)
+		if (triggercnt > 3)
 		{
 			trigger = false;
 			triggercnt = 0;

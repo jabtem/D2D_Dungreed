@@ -93,7 +93,7 @@ void Dungeon::Update(float frame)
 		case 0:
 			preRoomNum = curRoomNum;//현재 룸넘버를 이전룸넘버에 저장
 			curRoomNum = 1;
-			character.Reset(128, 630);
+			character.Reset(64*2, 630);
 			camera.Cam_Reset();//카메라 좌표초기화
 			collision.Set_isRoomChange(false);
 			resetRect();
@@ -110,17 +110,25 @@ void Dungeon::Update(float frame)
 			else if(collision.Get_MoveZone().left == moveZone[1].left)
 			{
 				curRoomNum = 2;
-				character.Reset(128, 630);
+				character.Reset(64*2, 630);
 			}
 			camera.Cam_Reset();//카메라 좌표초기화
 			collision.Set_isRoomChange(false);
 			resetRect();
 			break;
+		case 2:
+			preRoomNum = curRoomNum;
+			curRoomNum = 1;
+			character.Reset(64*23, 630);
+			camera.Cam_Reset();//카메라 좌표초기화
+			collision.Set_isRoomChange(false);
+			resetRect();
 		}
 
 	}
 	mon[0].Update();
 	mon[1].Update();
+	mon[2].Update();
 }
 
 void Dungeon::Draw()
@@ -158,10 +166,20 @@ void Dungeon::Draw()
 	case 2:
 		//바닥
 		SetRect(&wall[0], 0, 630, 1600, 768);
+		//왼벽
+		SetRect(&wall[1], 0, 0, 128, 64 * 6);
+		//천장
+		SetRect(&wall[2], 0, 0, 64 * 25, 64 * 2);;
+		//오른벽
+		SetRect(&wall[3], 64 * 23, 0, 64 * 25, 64 * 12);
+
+		SetRect(&moveZone[0], 0, 64 * 6, 32, 640);//이동영역
 		DrawRoom(2);//던전 1번룸 그림
+		mon[2].Spawn(800, 640);
+		mon[2].Draw();
 		break;
 	}
-	//0번룸 충돌맵
+	//페이드인효과
 	fadeIn.SetColor(255, 255, 255, alpha);//투명도적용
 	fadeIn.Draw(0, 0, 0, 1.0, 1.0);
 }
@@ -200,5 +218,6 @@ void Dungeon::resetRect()
 
 void Dungeon::resetAlpha()
 {
+	//알파값초기화
 	alpha = 255;
 }
