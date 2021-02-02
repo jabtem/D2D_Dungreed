@@ -79,7 +79,6 @@ void Menu::Draw()
 {
 
 
-	//683-72
 	menuimg2.Render(mx2, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg2.Render(-2816+mx2, 0, 0, 1.0, 1.0); //이미지출력
 	menuimg1.Render(mx, 0, 0, 1.0, 1.0); //이미지출력
