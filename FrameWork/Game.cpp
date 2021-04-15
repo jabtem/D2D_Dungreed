@@ -21,8 +21,6 @@ void Game::Init()
 	monster.Init();
 
 	Gmanager.Init();
-	// 데이타 베이스///////////////////
-	//sql.Init();
 }
 
 void Game::Draw()

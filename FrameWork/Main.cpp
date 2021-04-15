@@ -31,37 +31,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 	RegisterClassEx( &wc ) ;
 
-	/* ---------------------------------------------------
-	/////////////////// 정가운데 출력 ////////////////////
-
-				프로그램을 모니터의 정가운데
-				출력하게 해 주는 코드입니다.
-
-	//////////////////////////////////////////////////////
-	----------------------요-기-서-부-터-----------------*/
 	RECT rt = {0, 0, SCREEN_WITH, SCREEN_HEIGHT};
 	int W = rt.right - rt.left;
 	int H = rt.bottom - rt.top;
 	int X = (GetSystemMetrics(SM_CXSCREEN)/2) - SCREEN_WITH/2;
 	int Y = ( (GetSystemMetrics(SM_CYSCREEN)/2) - SCREEN_HEIGHT/2 );
-	/*---------------------요-기-까-지-------------------*/
 
-	/*
-		int WINAPI GetSystemMetrics(
-			int nIndex
-		);
 
-		<인자값>
-		SM_CXSCREEN : 화면의 넓이를 구할 수 있다.
-		SM_CYSCREEN : 화면의 높이를 구할 수 있다.
-
-		현재 화면의 해상도를 구할 수 있다. 이 외에도 인자값에따라 다양한 값을 구할 수 있다.
-		자세한 사항은 MSDN 의 GetSystemMetrics 를 참고하길 바람
-		단, 다중 모니터에서 값을 구할 경우 메인 모니터에 대해서만 값을 구하기때문에 이 함수를 사용하면 안된다.
-		다중 모니터에서 전체 해상도를 구하길 원할경우 GetMonitorInfo 함수를 이용하자
-	*/
-
-	// WS_POPUP 빼면 테투리가 생긴다~
 	g_hWnd = CreateWindowEx( NULL, wc.lpszClassName, 
 		"Dungreed", 
 		WS_OVERLAPPEDWINDOW/*WS_EX_TOPMOST | WS_POPUP*/,
@@ -70,21 +46,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 
 	dv_font.Create(g_hWnd) ;
-	//sound.g_pSoundManager = new CSoundManager();
-	//sound.g_pSoundManager->Initialize(g_hWnd, DSSCL_PRIORITY);
-	//sound.g_pSoundManager->SetPrimaryBufferFormat(2,22050,16);
-	
-	//g_SoundManager.Initialize(g_hWnd, DSSCL_PRIORITY);
-	//g_SoundManager.SetPrimaryBufferFormat(2,22050,16);
+
 
 	ShowWindow( g_hWnd, SW_SHOW ) ;
 	UpdateWindow( g_hWnd ) ;
-	// 마우스 안보이게~
-	//ShowCursor(FALSE);
 
 	///////////////////////////////////////////////////////////////////
 	ZeroMemory(&msg, sizeof(MSG));
-	//TRACE("REV ====== %s ========= \n\n", buffer);
+
 	/////////// 챕터 초기화 /////////////////
 	g_Mng.chap[LOGO] = new Logo;
 	g_Mng.chap[MENU] = new Menu;

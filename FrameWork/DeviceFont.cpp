@@ -43,8 +43,7 @@ bool g_DeviceFont::Create( HWND g_hWnd )
 	fdesc.Weight = 500 ;
 	fdesc.Italic = FALSE ;
 	fdesc.CharSet = DEFAULT_CHARSET ;
-	//fdesc.FaceName[LF_FACESIZE];
-	//strcpy( fdesc.FaceName , "µ¸¿ò" ) ;
+
 	strcpy( fdesc.FaceName, "Å¸ÀÌÆ÷_½Ö¹®µ¿ B" ) ;
 
 	D3DXCreateFontIndirect( Device9 , &fdesc , &Fonts ) ;
@@ -58,7 +57,6 @@ bool g_DeviceFont::DrawString( const char* msg , int x , int y , D3DCOLOR color)
 	RECT rect = { x , y , fdesc.Width*strlen(msg) , fdesc.Height } ;
 
 	Sprite->Begin( D3DXSPRITE_ALPHABLEND ) ;
-	//Fonts->DrawText(Sprite, msg, strlen(msg), &rect, DT_NOCLIP, color(¿øÇÏ´Â Ä®·¯ Àü´Ş ½Ã));
 	Fonts->DrawText( Sprite , msg , strlen( msg ) , &rect , DT_NOCLIP , D3DCOLOR_XRGB(255,0,255) ) ;
 	Sprite->End() ;
 	

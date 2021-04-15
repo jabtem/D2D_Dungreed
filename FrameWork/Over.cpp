@@ -1,5 +1,6 @@
 #include "Include.h"
 
+//게임오버용, 현재 안쓰임
 
 Over::Over()
 {
@@ -14,7 +15,6 @@ void Over::Init()
 
 }
 
-// Chap, 재정의 함수 호출
 void Over::Update(double frame)
 {
 	//if(처리 후) g_Mng.n_Chap = MENU; 
