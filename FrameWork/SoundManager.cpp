@@ -2,8 +2,8 @@
 SoundManager sound;
 SoundManager::SoundManager()
 {
-	System_Create(&m_pSystem);
-	System_Create(&m_pSystem2);
+	System_Create(&m_pSystem);//배경음채널
+	System_Create(&m_pSystem2);//효과음채널
 	m_pSystem->init(10, FMOD_INIT_NORMAL, 0);
 	m_pSystem2->init(10, FMOD_INIT_NORMAL, 0);
 	m_Index = 0;

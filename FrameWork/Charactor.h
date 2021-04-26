@@ -47,14 +47,14 @@ private:
 	RECT Ch_Rect;//캐릭터 충돌판정 범위
 	bool jumpUp;
 	POINT mouseP;
-	int m_W;//캐릭터 실제 x좌표
+	int m_W;//캐릭터 실제 x좌표(월드좌표)
 	int m_H;//캐릭터 실제 y좌표
 
-	int PlayerX;//카메라영역기준 캐릭터 x좌표
+	int PlayerX;//카메라영역기준 캐릭터 x좌표(스크린좌표)
 	int PlayerY;//카메라영역기준 캐릭터 y좌표
 
 	int prePlayerX;//우클릭 시점의 x좌표
-	int prePlayerY;//우클릭 시전의 y좌표
+	int prePlayerY;//우클릭 시점의 y좌표
 
 	float angle1;//오른쪽기준 캐릭터중심과 마우스 커서 사이의 각도
 	float angle2;//왼쪽기준 캐릭터 중심과 마우스 커서 사이의 각도

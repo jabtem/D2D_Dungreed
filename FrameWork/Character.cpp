@@ -77,7 +77,7 @@ void Character::Update()
 
 	if (KeyDown(VK_SPACE)&& !isJump&&!key.Get_isSDown())//하단점프와 구분하기해 조건설정
 	{
-		isJump = true;
+		isJump = true;	
 		
 		posY = m_H;//점프전 캐릭터y좌표(월드기준)
 	}
@@ -126,7 +126,7 @@ void Character::Update()
 	if (isDash)//우클릭시 대쉬하도록 구현
 	{
 		Dash();
-	}
+	}	
 	PlayerX = m_W - cameraX;//화면영역에서의 플레이어의 X좌표(스크린좌표)
 	PlayerY = m_H - cameraY;//화면영역에서의 플레이어의 Y좌표(스크린좌표)
 }
@@ -284,21 +284,6 @@ void Character::Jumping()
 	m_H = posY - height;
 
 	jumpTime += deltaTime.GetDeltaTime()*15;
-
-
-	//if (jumpPower >= 80.0f)
-	//{
-	//	jumpPower = 80.0f;
-	//}
-
-	//if (height<0.0f&&collision.Get_TDCol())
-	//{
-	//	//m_H = posY;
-	//	//state = Idle;
-	//	Jump_Reset();
-	//	state = Idle;
-	//}
-
 }
 
 //현재 점프중인지 구분
@@ -412,7 +397,7 @@ bool Character::Get_CharacterHide()
 }
 
 
-//대쉬시 카메라 이동이 너무 안맞음 코드는남겨두되 시연에선 제외하도록함
+//대쉬시 카메라 이동이 너무 안맞음 자연스러운 대쉬기능은 수정이필요함 현재는 미사용
 void Character::Dash()
 {
 	D3DXVECTOR2 dir(mouseP.x - (prePlayerX + CHARACTER_WIDTH * 0.5), mouseP.y - (prePlayerY - CHARACTER_HEIGHT * 0.5));//대쉬할방향
